@@ -1,0 +1,40 @@
+---
+import { getCollection } from "astro:content";
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import Projects from "../components/Projects.astro";
+---
+
+<!doctype html>
+<html lang="en">
+    <head>
+        <BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
+    </head>
+    <body>
+        <Header />
+        <main>
+            <div id="hero">
+                <h1>Hello</h1>
+                <p>
+                    I'm Gerard Du Pre, software engineer and open source
+                    enthusiast.
+                </p>
+                <p>Welcome to my portfolio and blog.</p>
+            </div>
+            <Projects />
+        </main>
+        <Footer />
+    </body>
+</html>
+
+<style>
+    #hero {
+        max-width: 600px;
+        margin: 4em auto;
+        padding: 0 1em;
+        min-height: 90dvh;
+        text-align: center;
+    }
+</style>

@@ -1,0 +1,34 @@
+---
+const today = new Date();
+import { Github } from "simple-icons-astro";
+---
+
+<footer>
+    &copy; {today.getFullYear()} Gerard Du Pre. All rights reserved.
+    <div class="social-links">
+        <a href="https://github.com/gerardPolloRebozado" target="_blank">
+            <Github />
+        </a>
+    </div>
+</footer>
+<style>
+    footer {
+        padding: 2em 1em 6em 1em;
+        background: linear-gradient(var(--bg-surface)) no-repeat;
+        color: var(--text-mutted);
+        text-align: center;
+    }
+    .social-links {
+        display: flex;
+        justify-content: center;
+        gap: 1em;
+        margin-top: 1em;
+    }
+    .social-links a {
+        text-decoration: none;
+        color: var(--text-mutted);
+    }
+    .social-links a:hover {
+        color: var(--text-main);
+    }
+</style>
