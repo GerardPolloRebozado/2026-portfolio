@@ -8,7 +8,7 @@ const projects = (await getCollection("projects")).sort(
 
 <div id="projects">
     {
-        projects.map((project) => (
+        projects.map((project, index) => (
             <div class="project-card">
                 <div class="marquee-container" aria-hidden="true">
                     <div class="marquee-track">
@@ -25,6 +25,11 @@ const projects = (await getCollection("projects")).sort(
                         alt={project.data.title + " hero image"}
                     />
                     <p>{project.data.description}</p>
+                    {project.data.url && (
+                        <a href={project.data.url} class="button">
+                            Visit Project
+                        </a>
+                    )}
                 </div>
             </div>
         ))
@@ -44,7 +49,7 @@ const projects = (await getCollection("projects")).sort(
         background: var(--bg-surface);
         width: 100%;
         border-radius: var(--border-radius);
-        padding: 2rem 0;
+        padding: 2rem 0 50vh 0;
         display: flex;
         flex-direction: column;
         gap: 2em;
@@ -54,24 +59,48 @@ const projects = (await getCollection("projects")).sort(
     .project-card {
         border-radius: var(--border-radius);
         background: var(--bg-main) no-repeat;
-        box-shadow: var(--box-shadow);
-        margin: 0.5em 2em;
+        margin: 0 2em;
 
-        position: relative;
-        overflow: hidden;
+        position: sticky;
+        top: 5vh;
 
         height: 90dvh;
         display: flex;
         align-items: center;
         justify-content: center;
+
+        perspective: 1200px;
+
+        transform-origin: top center;
+        animation: rotateCardAway linear both;
+        animation-timeline: view();
+        animation-range: exit;
     }
 
-    @keyframes rotateCard {
+    @keyframes rotateCardAway {
         0% {
-            transform: rotateX(0deg);
+            transform: scale(1) rotateX(0deg);
+            opacity: 1;
+            filter: blur(0px);
         }
         100% {
-            transform: rotateX(360deg);
+            transform: scale(0.8) rotateX(-45deg) translateY(-10%);
+            opacity: 0;
+            filter: blur(10px);
+            visibility: hidden;
+        }
+    }
+
+    @keyframes rotateCardIn {
+        0% {
+            transform: scale(0.5) rotateX(-45deg) translateY(-10%);
+            opacity: 0;
+            filter: blur(10px);
+        }
+        100% {
+            transform: scale(1) rotateX(0deg);
+            opacity: 1;
+            filter: blur(0px);
         }
     }
 
@@ -83,16 +112,32 @@ const projects = (await getCollection("projects")).sort(
         border-radius: 8px;
         text-align: center;
         max-width: 80%;
+        border: 1px solid var(--bg-surface);
+        box-shadow: var(--box-shadow);
 
-        img {
-            width: 50rem;
-            border-radius: 12px;
-            margin: 1em 0;
-        }
-
-        animation: rotateCard linear;
+        transform-origin: top center;
+        animation: rotateCardIn linear both;
         animation-timeline: view();
-        animation-fill-mode: both;
+        animation-range: entry;
+    }
+
+    /* Fallback for Safari and Firefox */
+    @supports not (animation-timeline: view()) {
+        .project-card,
+        .card-content {
+            animation: none !important;
+            opacity: 1 !important;
+            transform: none !important;
+            filter: none !important;
+            visibility: visible !important;
+        }
+    }
+
+    .card-content img {
+        width: 50rem;
+        max-width: 100%;
+        border-radius: 12px;
+        margin: 1em 0;
     }
 
     .marquee-container {
