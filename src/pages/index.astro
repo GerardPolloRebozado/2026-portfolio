@@ -1,10 +1,12 @@
 ---
-import { getCollection } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
 import Projects from "../components/Projects.astro";
+import { Mail } from "@lucide/astro";
+import Github from "../components/icons/github.astro";
+import Linkedin from "../components/icons/linkedin.astro";
 ---
 
 <!doctype html>
@@ -16,25 +18,120 @@ import Projects from "../components/Projects.astro";
         <Header />
         <main>
             <div id="hero">
-                <h1>Hello</h1>
-                <p>
-                    I'm Gerard Du Pre, software engineer and open source
-                    enthusiast.
-                </p>
-                <p>Welcome to my portfolio and blog.</p>
+                <div>
+                    <div>
+                        <h1 id="hello">Hello</h1>
+                        <img
+                            src="https://assets.gerarddupre.dev/profile.jpg"
+                            alt="Profile picture of Gerard Du Pre"
+                            id="small-me"
+                        />
+                    </div>
+                    <p class="justify" id="about-me">
+                        I'm Gerard Du Pre, a software developer who enjoys
+                        building and running software that makes life easier.
+                        I'm especially into self-hosting, where I get to combine
+                        my coding skills with server management and automation.
+                        <br />
+                        <br />
+                        I've worked with a range of technologies, from C and Go to
+                        JavaScript, TypeScript, and Next.js, and I like learning new
+                        tools that help me solve problems more efficiently.
+                    </p>
+                    <div title="Contact icons" id="contact-buttons">
+                        <a
+                            href="mailto:hello@gerarddupre.dev"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="icon-button"
+                            ><Mail />
+                        </a>
+                        <a
+                            href="https://github.com/GerardPolloRebozado"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="icon-button"
+                        >
+                            <Github />
+                        </a>
+                        <a
+                            href="https://www.linkedin.com/in/gerard-du-pre/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="icon-button"
+                        >
+                            <Linkedin />
+                        </a>
+                    </div>
+                </div>
+                <img
+                    src="https://assets.gerarddupre.dev/profile.jpg"
+                    alt="Profile picture of Gerard Du Pre"
+                    id="big-me"
+                />
             </div>
             <Projects />
+            <Footer />
         </main>
-        <Footer />
+
+        <style>
+            #hero {
+                padding: 10rem 0px 0px 0px;
+                min-height: 90dvh;
+                display: grid;
+                grid-template-columns: auto auto;
+                gap: 2rem;
+                justify-content: space-evenly;
+            }
+
+            #contact-buttons {
+                display: flex;
+                gap: 1rem;
+                margin-top: 2rem;
+
+                #contact-buttons > svg {
+                    color: var(--text-primary);
+                }
+            }
+
+            #about-me {
+                max-width: 600px;
+            }
+
+            @media (min-width: 768px) {
+                #small-me {
+                    display: none;
+                }
+                #big-me {
+                    display: block;
+                    width: 300px;
+                    height: 300px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                }
+            }
+
+            @media (max-width: 767px) {
+                #hero {
+                    grid-template-columns: 1fr;
+                    text-align: center;
+                }
+
+                #hello {
+                    display: inline;
+                }
+                #small-me {
+                    display: inline;
+                    width: 50px;
+                    height: 50px;
+                    border-radius: 50%;
+                    object-fit: cover;
+                    margin: 0 1em;
+                }
+                #big-me {
+                    display: none;
+                }
+            }
+        </style>
     </body>
 </html>
-
-<style>
-    #hero {
-        max-width: 600px;
-        margin: 4em auto;
-        padding: 0 1em;
-        min-height: 90dvh;
-        text-align: center;
-    }
-</style>

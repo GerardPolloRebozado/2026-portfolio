@@ -25,24 +25,22 @@
     --text-muted: #71717a;
     --border-color: #2e2e2e;
 
-    /* Brand */
     --primary: #3b82f6;
     --primary-hover: #60a5fa;
     --secondary: #14b8a6;
     --secondary-hover: #2dd4bf;
 
-    /* Typography & UI */
     --font-heading: "Atkinson", sans-serif;
     --font-body: "Manrope variable", sans-serif;
-    --border-radius: 8px; /* Reduced from 35px for a cleaner look */
+    --border-radius: 8px;
 
     --box-shadow:
         0 2px 6px #3b82f640, 0 8px 24px #3b82f654, 0 16px 32px #3b82f654;
 }
 
 body {
-    font-family: var(--font-body); /* Changed to use your variable */
-    background-color: var(--bg-main); /* Fixed broken linear-gradient */
+    font-family: var(--font-body);
+    background-color: var(--bg-main);
     color: var(--text-primary);
     margin: 0;
     padding: 0;
@@ -120,16 +118,14 @@ img {
 
 code {
     padding: 2px 5px;
-    background-color: var(--bg-surface); /* Fixed invalid rgb() wrapper */
+    background-color: var(--bg-surface);
     border-radius: 4px;
 }
 
 pre {
     padding: 1.5em;
     border-radius: var(--border-radius);
-    background-color: var(
-        --bg-surface
-    ); /* Added background so pre blocks are visible */
+    background-color: var(--bg-surface);
 }
 
 pre > code {
@@ -170,5 +166,31 @@ hr {
     &:hover {
         background-color: var(--primary-hover);
         color: #ffffff;
+    }
+}
+
+.text-center {
+    text-align: center;
+}
+
+.justify {
+    text-align: justify;
+}
+
+.icon-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0.5em;
+    border-radius: 50%;
+    background-color: transparent;
+    transition: background-color 0.3s ease;
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+    cursor: pointer;
+
+    &:hover {
+        background-color: var(--bg-surface);
+        color: var(--primary);
     }
 }

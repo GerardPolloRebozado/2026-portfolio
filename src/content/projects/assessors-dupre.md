@@ -1,7 +1,7 @@
 ---
-title: "Social to Mealie"
-description: "Ecomerce where supermarkets can order products from a dairy factory and have them delivered to their stores."
-pubDate: 2025-01-15
-heroImage: https://raw.githubusercontent.com/GerardPolloRebozado/social-to-mealie/refs/heads/main/public/screenshot.png
+title: "Assessors Du Pre"
+description: "Landing page for insurance broker Assessors Du Pre, showcasing their services and expertise in the insurance industry."
+pubDate: 2025-03-28
+heroImage: https://assets.gerarddupre.dev/assessors-dupre.png
 url: https://github.com/GerardPolloRebozado/social-to-mealie
 ---

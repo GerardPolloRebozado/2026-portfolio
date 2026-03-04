@@ -6,34 +6,37 @@ const projects = (await getCollection("projects")).sort(
 );
 ---
 
-<div id="projects">
-    {
-        projects.map((project, index) => (
-            <div class="project-card">
-                <div class="marquee-container" aria-hidden="true">
-                    <div class="marquee-track">
-                        <span class="marquee-text">
-                            {project.data.title} &nbsp;&nbsp;&nbsp;
-                            {project.data.title} &nbsp;&nbsp;&nbsp;
-                        </span>
+<div id="container">
+    <h1 class="text-center">Projects</h1>
+    <div id="projects">
+        {
+            projects.map((project, index) => (
+                <div class="project-card">
+                    <div class="marquee-container" aria-hidden="true">
+                        <div class="marquee-track">
+                            <span class="marquee-text">
+                                {project.data.title} &nbsp;&nbsp;&nbsp;
+                                {project.data.title} &nbsp;&nbsp;&nbsp;
+                            </span>
+                        </div>
+                    </div>
+                    <div class="card-content">
+                        <h2>{project.data.title}</h2>
+                        <img
+                            src={project.data.heroImage}
+                            alt={project.data.title + " hero image"}
+                        />
+                        <p>{project.data.description}</p>
+                        {project.data.url && (
+                            <a href={project.data.url} class="button">
+                                Visit Project
+                            </a>
+                        )}
                     </div>
                 </div>
-                <div class="card-content">
-                    <h2>{project.data.title}</h2>
-                    <img
-                        src={project.data.heroImage}
-                        alt={project.data.title + " hero image"}
-                    />
-                    <p>{project.data.description}</p>
-                    {project.data.url && (
-                        <a href={project.data.url} class="button">
-                            Visit Project
-                        </a>
-                    )}
-                </div>
-            </div>
-        ))
-    }
+            ))
+        }
+    </div>
 </div>
 
 <style>
@@ -45,14 +48,17 @@ const projects = (await getCollection("projects")).sort(
         text-align: center;
     }
 
-    #projects {
+    #container {
         background: var(--bg-surface);
         width: 100%;
         border-radius: var(--border-radius);
         padding: 2rem 0 50vh 0;
+    }
+
+    #projects {
         display: flex;
         flex-direction: column;
-        gap: 2em;
+        gap: 10em;
         margin: 1em 0;
 
         & > .project-card:first-child .card-content {
@@ -118,12 +124,9 @@ const projects = (await getCollection("projects")).sort(
         padding: 2em;
         border-radius: 8px;
         text-align: center;
-        max-width: 80%;
+        max-width: 50%;
         border: 1px solid var(--bg-surface);
-        box-shadow: var(--box-shadow);
     }
-
-    .card-content
 
     /* Fallback for Safari and Firefox */
     @supports not (animation-timeline: view()) {
@@ -138,7 +141,7 @@ const projects = (await getCollection("projects")).sort(
     }
 
     .card-content img {
-        width: 50rem;
+        width: 35rem;
         max-width: 100%;
         border-radius: 12px;
         margin: 1em 0;
