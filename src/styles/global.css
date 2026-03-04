@@ -194,3 +194,37 @@ hr {
         color: var(--primary);
     }
 }
+
+/* Animations */
+
+.animate-reveal-center {
+    display: inline-block;
+    white-space: nowrap;
+    clip-path: inset(0 50% 0 50%);
+    animation: revealCenter 0.5s cubic-bezier(0.77, 0, 0.175, 1) forwards;
+    animation-delay: 0.3s;
+}
+
+@keyframes revealCenter {
+    0% {
+        clip-path: inset(0 50% 0 50%);
+    }
+    100% {
+        clip-path: inset(0 0% 0 0%);
+    }
+}
+
+.animate-fade {
+    opacity: 0;
+    animation: animate-fade 1s forwards;
+    animation-timing-function: cubic-bezier(0.26, 0.53, 0.74, 1.48);
+}
+
+@keyframes animate-fade {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
