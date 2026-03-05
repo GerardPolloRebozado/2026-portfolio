@@ -1,16 +1,17 @@
 ---
 import SocialLinks from "./Social-links.astro";
+import { useTranslations } from "../i18n/ui";
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as "en" | "es");
 ---
 
 <section id="contact">
     <div class="contact-inner fade-up">
-        <p class="orn-rule">get in touch</p>
-        <h2 class="contact-heading">
-            Let&apos;s build <em>something.</em>
-        </h2>
+        <p class="orn-rule">{t("contact.orn")}</p>
+        <h2 class="contact-heading" set:html={t("contact.heading")} />
         <p class="contact-sub">
-            Have a project in mind, want to collaborate, or just want to say
-            hello? My inbox is always open.
+            {t("contact.sub")}
         </p>
         <SocialLinks />
     </div>

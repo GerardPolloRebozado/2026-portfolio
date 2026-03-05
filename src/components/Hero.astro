@@ -1,6 +1,10 @@
 ---
 import GitHistory from "./github-history.astro";
 import SocialLinks from "./Social-links.astro";
+import { useTranslations } from "../i18n/ui";
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as "en" | "es");
 
 const skills = [
     "TypeScript",
@@ -56,32 +60,27 @@ const skills = [
         <div class="hero-grid">
             <!-- Left: name -->
             <div class="hero-left">
-                <h1 class="hero-name fade-up show">
-                    Gerard<br /><em>Du Pre</em>
+                <h1 class="hero-name fade-up show" set:html={t("hero.name")}>
                 </h1>
             </div>
 
             <!-- Right: bio, git log, CTAs -->
             <div class="hero-right fade-up show" style="animation-delay:0.08s">
                 <p class="hero-bio">
-                    Fullstack engineer —
-                    <span style="color:var(--blue)"
-                        >building things that work.</span
-                    ><br />
-                    I enjoy self-hosting, open source, and software that makes life
-                    a easier. Based in Spain.
+                    {t("hero.bio_highlight")}<br />
+                    {t("hero.bio")}
                 </p>
                 <GitHistory />
                 <div class="hero-ctas">
-                    <a href="#projects" class="cta-primary">see work →</a>
-                    <a href="/blog" class="cta-secondary">read writing</a>
+                    <a href="#projects" class="cta-primary">{t("hero.cta_projects")}</a>
+                    <a href="/blog" class="cta-secondary">{t("hero.cta_blog")}</a>
                 </div>
             </div>
         </div>
 
         <div class="hero-footer">
             <SocialLinks />
-            <p class="hero-loc">2026 · Spain</p>
+            <p class="hero-loc">{t("hero.location")}</p>
         </div>
     </div>
 

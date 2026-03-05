@@ -1,0 +1,59 @@
+{
+  "nav.name": "Gerard Du Pre",
+  "nav.hire": "hire me",
+  "nav.theme": "Toggle theme",
+
+  "hero.name": "Gerard<br /><em>Du Pre</em>",
+  "hero.bio_highlight": "Fullstack engineer — building things that work.",
+  "hero.bio": "I enjoy self-hosting, open source, and software that makes life a easier. Based in Spain.",
+  "hero.cta_projects": "see work →",
+  "hero.cta_blog": "read writing",
+  "hero.location": "2026 · Spain",
+
+  "about.title": "About",
+  "about.p1": "I'm Gerard Du Pre, a software engineer who enjoys building and running software that makes life easier. I'm especially into self-hosting projects, where I get to combine my coding skills with server management and automation. I've worked with a range of technologies, from C and Go to JavaScript, TypeScript, and Next.js, and I like learning new tools that help me solve problems more efficiently.",
+  "about.p2": "I write a lot of <span class=\"chip\">TypeScript</span> and <span class=\"chip\">C/C++</span> and I'm currently studying at the European Institute of Technology (Epitech), where I'm honing my software engineering skills and diving deeper into computer science concepts. I have a passion for open source software and believe in the power of community-driven projects to create lasting impact.",
+  "about.p3": "When I'm not coding, you can find me playing video games or skiing in the mountains. I'm always looking for new challenges and opportunities to grow as a developer, so feel free to reach out if you want to collaborate on a project or just chat about tech!",
+  "about.stack": "Stack",
+  "about.now": "Now",
+  "about.now_item1": "Building this portfolio with Astro",
+  "about.now_item2": "Self-hosting more of my own stack",
+  "about.now_item3": "Mantainer of <a href=\"https://github.com/GerardPolloRebozado/social-to-mealie\" target=\"_blank\">Social to Mealie</a> and <a href=\"https://github.com/GerardPolloRebozado/navifetch\" target=\"_blank\">navifetch</a>",
+  "about.misc": "Misc",
+  "about.editor": "editor",
+  "about.os": "OS",
+  "about.philosophy": "philosophy",
+  "about.philosophy_val": "boring code > clever code",
+
+  "experience.title": "Experience",
+  "experience.current": "current",
+
+  "projects.title": "Projects",
+  "projects.github": "github ↗",
+  "projects.visit": "visit ↗",
+
+  "services.title": "SERVICES",
+  "services.entry_label": "SYS://SERVICES {count} ENTRIES",
+  "services.end_label": "END OF INDEX",
+  "services.frontend.title": "Frontend Development",
+  "services.frontend.desc": "Building modern, responsive and performant user interfaces using React, Next.js, and the latest web technologies.",
+  "services.backend.title": "Backend & DevOps",
+  "services.backend.desc": "Developing scalable backend services and automating infrastructure with Docker, CI/CD and modern deployment practices.",
+  "services.systems.title": "Systems & Infrastructure",
+  "services.systems.desc": "Managing self-hosted services, server infrastructure, and home lab setups for optimal performance and automation.",
+
+  "contact.orn": "get in touch",
+  "contact.heading": "Let's build <em>something.</em>",
+  "contact.sub": "Have a project in mind, want to collaborate, or just want to say hello? My inbox is always open.",
+
+  "footer.copy": "Gerard Du Pre · {year}",
+
+  "site.title": "Gerard Du Pre",
+  "site.description": "Welcome to my website!",
+
+  "phrases.1": "I make things click.",
+  "phrases.2": "I talk to computers, they ignore me sometimes.",
+  "phrases.3": "I have a love-hate relationship with bugs: I love to squash them, but they keep coming back.",
+  "phrases.4": "I write code that even my future self can understand.",
+  "phrases.5": "I believe in the power of a good README file."
+}

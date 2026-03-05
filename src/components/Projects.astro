@@ -1,61 +1,24 @@
 ---
-const projects = [
-    {
-        data: {
-            title: "Assessors Dupre",
-            url: "https://assessorsdupre.com/",
-            description:
-                "Landing page for an insurance broker, featuring a clean design and responsive layout. Showcases the company's services and expertise to attract potential clients.",
-            tags: ["astro", "tailwind", "landing page", "rybbit"],
-            pubDate: new Date("2024-02-15"),
-        },
-    },
-    {
-        data: {
-            title: "De La Granja A Casa",
-            url: "https://dlagranjaacasa.com/",
-            description:
-                "Dlagranja a Casa is an ecommerce platform where supermarkets can order dairy products directly from their supplier, it features a range of products and a user-friendly interface for easy ordering.",
-            tags: ["next.js", "payload cms", "ecommerce", "heroui"],
-            pubDate: new Date("2023-08-01"),
-        },
-    },
-    {
-        data: {
-            title: "Social To Mealie",
-            url: "https://github.com/username/social-to-mealie",
-            description:
-                "Imports social platforms content to Mealie for recipe saving using AI.",
-            tags: [
-                "ai",
-                "next.js",
-                "shadcn/ui",
-                "Apple Shortcuts",
-                "yt-dlp",
-                "gallery-dl",
-                "open source",
-            ],
-            pubDate: new Date("2025-03-10"),
-        },
-    },
-    {
-        data: {
-            title: "Navifetch",
-            url: "https://github.com/GerardPolloRebozado/navifetch",
-            description:
-                "A navidrome proxy that adds support for importing songs from YouTube using yt-dlp, allowing users to easily expand their music library with tracks from YouTube while still enjoying the features of Navidrome.",
-            tags: ["go", "navidrome", "yt-dlp", "open source", "musicbrainz"],
-            pubDate: new Date("2026-3-5"),
-        },
-    },
-].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+import { getCollection } from "astro:content";
+import { useTranslations } from "../i18n/ui";
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as "en" | "es");
+
+const projectEntries = await getCollection("projects", ({ id }) => {
+    return id.startsWith(`${lang}/`);
+});
+
+const projects = projectEntries
+    .map((entry) => entry.data)
+    .sort((a, b) => b.pubDate.valueOf() - a.pubDate.valueOf());
 ---
 
 <section id="projects">
     <div class="proj-inner">
         <div class="sep fade-up">
             <span class="sep-num">03 —</span>
-            <span class="sep-label">Projects</span>
+            <span class="sep-label">{t("projects.title")}</span>
             <span class="sep-rule"></span>
         </div>
         <div class="proj-list fade-up">
@@ -65,27 +28,25 @@ const projects = [
                         <div class="card-top">
                             <span class="card-path">
                                 ~/
-                                {project.data.title
-                                    .toLowerCase()
-                                    .replace(/\s+/g, "-")}
+                                {project.title.toLowerCase().replace(/\s+/g, "-")}
                             </span>
-                            {project.data.url && (
+                            {project.url && (
                                 <a
-                                    href={project.data.url}
+                                    href={project.url}
                                     target="_blank"
                                     class="card-link"
                                 >
-                                    {project.data.url.includes("github.com")
-                                        ? "github ↗"
-                                        : "visit ↗"}
+                                    {project.url.includes("github.com")
+                                        ? t("projects.github")
+                                        : t("projects.visit")}
                                 </a>
                             )}
                         </div>
-                        <h3 class="card-title">{project.data.title}</h3>
-                        <p class="card-desc">{project.data.description}</p>
-                        {project.data.tags && (
+                        <h3 class="card-title">{project.title}</h3>
+                        <p class="card-desc">{project.description}</p>
+                        {project.tags && (
                             <div class="card-tags">
-                                {project.data.tags.map((tag: string) => (
+                                {project.tags.map((tag: string) => (
                                     <span class="chip">{tag}</span>
                                 ))}
                             </div>

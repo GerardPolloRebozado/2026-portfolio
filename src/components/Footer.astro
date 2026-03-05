@@ -1,12 +1,16 @@
 ---
 import SocialLinks from "./Social-links.astro";
+import { useTranslations } from "../i18n/ui";
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as "en" | "es");
 
 const year = new Date().getFullYear();
 ---
 
 <footer>
     <div class="foot-inner">
-        <span class="foot-copy">Gerard Du Pre &middot; {year}</span>
+        <span class="foot-copy">{t("footer.copy").replace("{year}", year.toString())}</span>
         <SocialLinks />
     </div>
 </footer>

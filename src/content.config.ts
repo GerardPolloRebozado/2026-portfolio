@@ -2,14 +2,11 @@ import { defineCollection, z } from "astro:content";
 import { glob } from "astro/loaders";
 
 const blog = defineCollection({
-    // Load Markdown and MDX files in the `src/content/blog/` directory.
     loader: glob({ base: "./src/content/blog", pattern: "**/*.{md,mdx}" }),
-    // Type-check frontmatter using a schema
     schema: ({ image }) =>
         z.object({
             title: z.string(),
             description: z.string(),
-            // Transform string to Date object
             pubDate: z.coerce.date(),
             updatedDate: z.coerce.date().optional(),
             heroImage: image().optional(),
@@ -18,16 +15,29 @@ const blog = defineCollection({
 
 const projects = defineCollection({
     loader: glob({ base: "./src/content/projects", pattern: "**/*.{md,mdx}" }),
-    schema: ({ image }) =>
+    schema: () =>
         z.object({
             title: z.string(),
             description: z.string(),
             pubDate: z.coerce.date(),
-            heroImage: z.string(),
             url: z.string().optional(),
             tags: z.array(z.string()).optional(),
-            icon: z.string().optional(),
         }),
 });
 
-export const collections = { blog, projects };
+const experience = defineCollection({
+    loader: glob({ base: "./src/content/experience", pattern: "**/*.{md,mdx}" }),
+    schema: () =>
+        z.object({
+            period: z.string(),
+            role: z.string(),
+            company: z.string(),
+            location: z.string(),
+            current: z.boolean().default(false),
+            description: z.string(),
+            tags: z.array(z.string()).optional(),
+            order: z.number().optional(), // Para controlar el orden si no es por fecha
+        }),
+});
+
+export const collections = { blog, projects, experience };

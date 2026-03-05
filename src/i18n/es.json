@@ -1,0 +1,59 @@
+{
+  "nav.name": "Gerard Du Pre",
+  "nav.hire": "contrátame",
+  "nav.theme": "Cambiar tema",
+
+  "hero.name": "Gerard<br /><em>Du Pre</em>",
+  "hero.bio_highlight": "Ingeniero Fullstack — construyendo cosas que funcionan.",
+  "hero.bio": "Me apasiona el self-hosting, el open source y el software que hace la vida más fácil.",
+  "hero.cta_projects": "ver trabajo →",
+  "hero.cta_blog": "leer blog",
+  "hero.location": "2026 · España",
+
+  "about.title": "Sobre mí",
+  "about.p1": "Soy Gerard Du Pre, un ingeniero de software que disfruta construyendo y ejecutando software que hace la vida más fácil. Me interesan especialmente los proyectos de self-hosting, donde puedo combinar mis habilidades de programación con la gestión de servidores y la automatización. He trabajado con una variedad de tecnologías, desde C y Go hasta JavaScript, TypeScript y Next.js, y me gusta aprender nuevas herramientas que me ayuden a resolver problemas de manera más eficiente.",
+  "about.p2": "Escribo mucho <span class=\"chip\">TypeScript</span> y <span class=\"chip\">C/C++</span> y actualmente estoy estudiando en el Instituto Europeo de Tecnología (Epitech), donde estoy perfeccionando mis habilidades de ingeniería de software y profundizando en conceptos de ciencias de la computación. Me apasiona el software de código abierto y creo en el poder de los proyectos impulsados por la comunidad para crear un impacto duradero.",
+  "about.p3": "Cuando no estoy programando, me puedes encontrar jugando a videojuegos o esquiando en las montañas. Siempre estoy buscando nuevos desafíos y oportunidades para crecer como desarrollador, así que no dudes en contactarme si quieres colaborar en un proyecto o simplemente hablar sobre tecnología.",
+  "about.stack": "Stack",
+  "about.now": "Ahora",
+  "about.now_item1": "Construyendo este portfolio con Astro",
+  "about.now_item2": "Auto-alojando más partes de mi propio stack",
+  "about.now_item3": "Mantenedor de <a href=\"https://github.com/GerardPolloRebozado/social-to-mealie\" target=\"_blank\">Social to Mealie</a> y <a href=\"https://github.com/GerardPolloRebozado/navifetch\" target=\"_blank\">navifetch</a>",
+  "about.misc": "Varios",
+  "about.editor": "editor",
+  "about.os": "SO",
+  "about.philosophy": "filosofía",
+  "about.philosophy_val": "código aburrido > código ingenioso",
+
+  "experience.title": "Experiencia",
+  "experience.current": "actual",
+
+  "projects.title": "Proyectos",
+  "projects.github": "github ↗",
+  "projects.visit": "visitar ↗",
+
+  "services.title": "SERVICIOS",
+  "services.entry_label": "SYS://SERVICIOS {count} ENTRADAS",
+  "services.end_label": "FIN DEL ÍNDICE",
+  "services.frontend.title": "Desarrollo Frontend",
+  "services.frontend.desc": "Construyendo interfaces de usuario modernas, responsive y eficientes utilizando React, Next.js y las últimas tecnologías web.",
+  "services.backend.title": "Backend y DevOps",
+  "services.backend.desc": "Desarrollando servicios backend escalables y automatizando la infraestructura con Docker, CI/CD y prácticas de despliegue modernas.",
+  "services.systems.title": "Sistemas e Infraestructura",
+  "services.systems.desc": "Gestionando servicios auto-alojados, infraestructura de servidores y configuraciones de laboratorios domésticos para un rendimiento y automatización óptimos.",
+
+  "contact.orn": "ponte en contacto",
+  "contact.heading": "Construyamos <em>algo.</em>",
+  "contact.sub": "¿Tienes un proyecto en mente, quieres colaborar o simplemente saludar? Mi bandeja de entrada siempre está abierta.",
+
+  "footer.copy": "Gerard Du Pre · {year}",
+
+  "site.title": "Gerard Du Pre",
+  "site.description": "¡Bienvenido a mi sitio web!",
+
+  "phrases.1": "Hago que las cosas funcionen.",
+  "phrases.2": "Hablo con los ordenadores, a veces me ignoran.",
+  "phrases.3": "Tengo una relación de amor-odio con los bugs: me encanta aplastarlos, pero siempre vuelven.",
+  "phrases.4": "Escribo código que incluso mi yo del futuro podrá entender.",
+  "phrases.5": "Creo en el poder de un buen archivo README."
+}

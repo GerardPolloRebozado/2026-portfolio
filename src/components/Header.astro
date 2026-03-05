@@ -1,5 +1,9 @@
 ---
 import { Moon, Sun } from "@lucide/astro";
+import { useTranslations } from "../i18n/ui";
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as "en" | "es");
 ---
 
 <!-- Custom cursor -->
@@ -14,23 +18,42 @@ import { Moon, Sun } from "@lucide/astro";
         href="/"
         style="font-family:var(--font-display);font-size:1.05rem;color:var(--ink);letter-spacing:-0.01em;text-decoration:none;opacity:1;"
     >
-        <em>Gerard Du Pre</em>
+        <em>{t("nav.name")}</em>
     </a>
 
     <!-- Desktop nav actions -->
     <div class="nav-desktop">
         <div class="nav-actions">
+            {
+                lang === "en" ? (
+                    <a
+                        href="/es"
+                        style="font-size:0.85rem;color:var(--ink2);text-decoration:none;transition:opacity 0.2s;"
+                    >
+                        Español
+                    </a>
+                ) : (
+                    <a
+                        href="/en"
+                        style="font-size:0.85rem;color:var(--ink2);text-decoration:none;transition:opacity 0.2s;"
+                    >
+                        English
+                    </a>
+                )
+            }
             <button
                 id="theme-toggle"
                 class="toggle-btn"
-                aria-label="Toggle theme"
+                aria-label={t("nav.theme")}
             >
                 <span id="theme-sun">
                     <Sun />
                 </span>
                 <span id="theme-moon" style="display:none"><Moon /></span>
             </button>
-            <a href="mailto:hello@gerarddupre.dev" class="hire-btn">hire me</a>
+            <a href="mailto:hello@gerarddupre.dev" class="hire-btn"
+                >{t("nav.hire")}</a
+            >
         </div>
     </div>
 
@@ -39,7 +62,7 @@ import { Moon, Sun } from "@lucide/astro";
         <button
             id="theme-toggle-mob"
             class="toggle-btn"
-            aria-label="Toggle theme"
+            aria-label={t("nav.theme")}
         >
             <span id="theme-sun-mob">&#9728;</span>
             <span id="theme-moon-mob" style="display:none">&#9789;</span>

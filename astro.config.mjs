@@ -10,7 +10,13 @@ import node from '@astrojs/node';
 export default defineConfig({
   site: 'https://example.com',
   integrations: [mdx(), sitemap()],
-
+  i18n: {
+    defaultLocale: 'en',
+    locales: ['en', 'es'],
+    routing: {
+      prefixDefaultLocale: true,
+    },
+  },
   adapter: node({
     mode: 'standalone',
   }),

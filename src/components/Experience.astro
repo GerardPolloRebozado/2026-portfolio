@@ -1,58 +1,24 @@
 ---
-const experiences = [
-    {
-        period: "Jun 2025 → Dec 2025",
-        role: "Fullstack Developer (Internship)",
-        company: "MigaLabs",
-        location: "Barcelona",
-        current: false,
-        description:
-            "Created a blockchain explorer, building Next.js frontends (React + TypeScript) and Go backend services, focusing on performance and scalable data processing to deliver production-ready features.",
-        tags: [
-            "Next.js",
-            "React",
-            "TypeScript",
-            "Go",
-            "ClickhouseDB",
-            "PostgreSQL",
-            "Docker",
-            "System Administration",
-            "Cloudflare",
-        ],
-    },
-    {
-        period: "Jul 2023 → Dec 2023",
-        role: "Wordpress Developer (Internship)",
-        company: "Indian Webs",
-        location: "Barcelona",
-        current: false,
-        description:
-            "Assisted in developing and maintaining WordPress websites for various clients. Gained experience in theme customization, plugin development, and site optimization while collaborating with a team of developers and designers to deliver high-quality web solutions.",
-        tags: ["WordPress", "PHP", "HTML/CSS", "JavaScript"],
-    },
-    {
-        period: "Nov 2021 → Sept 2022",
-        role: "Computer Equipment Repair Technician (Internship)",
-        company: "Intecat",
-        location: "Sabadell",
-        current: false,
-        description:
-            "Responsible for diagnosing and repairing hardware and software issues in a wide range of Apple devices, including latops, phones, and wearables. Provided technical support to customers, ensuring timely resolution of issues and maintaining high levels of customer satisfaction.",
-        tags: [
-            "Apple",
-            "Technical Support",
-            "Hardware Repair",
-            "Customer Service",
-        ],
-    },
-];
+import { getCollection } from "astro:content";
+import { useTranslations } from "../i18n/ui";
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as "en" | "es");
+
+const experienceEntries = await getCollection("experience", ({ id }) => {
+    return id.startsWith(`${lang}/`);
+});
+
+const experiences = experienceEntries
+    .map((entry) => entry.data)
+    .sort((a, b) => (a.order || 0) - (b.order || 0));
 ---
 
 <section id="experience">
     <div class="exp-inner">
         <div class="sep fade-up">
             <span class="sep-num">02 —</span>
-            <span class="sep-label">Experience</span>
+            <span class="sep-label">{t("experience.title")}</span>
             <span class="sep-rule"></span>
         </div>
         <div class="exp-list fade-up">
@@ -64,7 +30,9 @@ const experiences = [
                             <div class="exp-header">
                                 <h3 class="exp-role">{exp.role}</h3>
                                 {exp.current && (
-                                    <span class="exp-badge">current</span>
+                                    <span class="exp-badge">
+                                        {t("experience.current")}
+                                    </span>
                                 )}
                             </div>
                             <p class="exp-company">
@@ -72,7 +40,7 @@ const experiences = [
                             </p>
                             <p class="exp-desc">{exp.description}</p>
                             <div class="exp-tags">
-                                {exp.tags.map((tag) => (
+                                {exp.tags?.map((tag) => (
                                     <span class="chip">{tag}</span>
                                 ))}
                             </div>

@@ -1,0 +1,18 @@
+---
+import { useTranslations } from "../i18n/ui";
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as "en" | "es");
+
+const funPhrases = [
+    t("phrases.1"),
+    t("phrases.2"),
+    t("phrases.3"),
+    t("phrases.4"),
+    t("phrases.5"),
+];
+---
+
+<p class="pull-quote">
+    {funPhrases[Math.floor(Math.random() * funPhrases.length)]}
+</p>
