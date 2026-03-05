@@ -1,192 +1,164 @@
 ---
-import { getCollection } from "astro:content";
-
-const projects = (await getCollection("projects")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+const projects = [
+    {
+        data: {
+            title: "Assessors Dupre",
+            url: "https://assessorsdupre.com/",
+            description:
+                "Landing page for an insurance broker, featuring a clean design and responsive layout. Showcases the company's services and expertise to attract potential clients.",
+            tags: ["astro", "tailwind", "landing page", "rybbit"],
+            pubDate: new Date("2024-02-15"),
+        },
+    },
+    {
+        data: {
+            title: "De La Granja A Casa",
+            url: "https://dlagranjaacasa.com/",
+            description:
+                "Dlagranja a Casa is an ecommerce platform where supermarkets can order dairy products directly from their supplier, it features a range of products and a user-friendly interface for easy ordering.",
+            tags: ["next.js", "payload cms", "ecommerce", "heroui"],
+            pubDate: new Date("2023-08-01"),
+        },
+    },
+    {
+        data: {
+            title: "Social To Mealie",
+            url: "https://github.com/username/social-to-mealie",
+            description:
+                "Imports social platforms content to Mealie for recipe saving using AI.",
+            tags: [
+                "ai",
+                "next.js",
+                "shadcn/ui",
+                "Apple Shortcuts",
+                "yt-dlp",
+                "gallery-dl",
+                "open source",
+            ],
+            pubDate: new Date("2025-03-10"),
+        },
+    },
+    {
+        data: {
+            title: "Navifetch",
+            url: "https://github.com/GerardPolloRebozado/navifetch",
+            description:
+                "A navidrome proxy that adds support for importing songs from YouTube using yt-dlp, allowing users to easily expand their music library with tracks from YouTube while still enjoying the features of Navidrome.",
+            tags: ["go", "navidrome", "yt-dlp", "open source", "musicbrainz"],
+            pubDate: new Date("2026-3-5"),
+        },
+    },
+].sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
 ---
 
-<div id="container">
-    <h1 class="text-center">Projects</h1>
-    <div id="projects">
-        {
-            projects.map((project, index) => (
-                <div class="project-card">
-                    <div class="marquee-container" aria-hidden="true">
-                        <div class="marquee-track">
-                            <span class="marquee-text">
-                                {project.data.title} &nbsp;&nbsp;&nbsp;
-                                {project.data.title} &nbsp;&nbsp;&nbsp;
+<section id="projects">
+    <div class="proj-inner">
+        <div class="sep fade-up">
+            <span class="sep-num">03 —</span>
+            <span class="sep-label">Projects</span>
+            <span class="sep-rule"></span>
+        </div>
+        <div class="proj-list fade-up">
+            {
+                projects.map((project) => (
+                    <div class="card">
+                        <div class="card-top">
+                            <span class="card-path">
+                                ~/
+                                {project.data.title
+                                    .toLowerCase()
+                                    .replace(/\s+/g, "-")}
                             </span>
+                            {project.data.url && (
+                                <a
+                                    href={project.data.url}
+                                    target="_blank"
+                                    class="card-link"
+                                >
+                                    {project.data.url.includes("github.com")
+                                        ? "github ↗"
+                                        : "visit ↗"}
+                                </a>
+                            )}
                         </div>
-                    </div>
-                    <div class="card-content">
-                        <h2>{project.data.title}</h2>
-                        <img
-                            src={project.data.heroImage}
-                            alt={project.data.title + " hero image"}
-                        />
-                        <p>{project.data.description}</p>
-                        {project.data.url && (
-                            <a href={project.data.url} class="button">
-                                Visit Project
-                            </a>
+                        <h3 class="card-title">{project.data.title}</h3>
+                        <p class="card-desc">{project.data.description}</p>
+                        {project.data.tags && (
+                            <div class="card-tags">
+                                {project.data.tags.map((tag: string) => (
+                                    <span class="chip">{tag}</span>
+                                ))}
+                            </div>
                         )}
                     </div>
-                </div>
-            ))
-        }
+                ))
+            }
+        </div>
     </div>
-</div>
+</section>
 
 <style>
-    #hero {
-        max-width: 600px;
-        margin: 4em auto;
-        padding: 0 1em;
-        min-height: 90dvh;
-        text-align: center;
-    }
-
-    #container {
-        background: var(--bg-surface);
-        width: 100%;
-        border-radius: var(--border-radius);
-        padding: 2rem 0 50vh 0;
-    }
-
     #projects {
-        display: flex;
-        flex-direction: column;
-        gap: 10em;
-        margin: 1em 0;
-
-        & > .project-card:first-child .card-content {
-            transform-origin: top center;
-            animation: rotateCardIn linear forwards;
-            animation-timeline: view();
-            animation-range: entry;
-        }
+        padding: 6rem 2.5rem;
+        background: var(--paper);
+    }
+    .proj-inner {
+        max-width: 1400px;
+        margin: 0 auto;
+    }
+    .proj-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 1.5rem;
     }
 
-    .project-card {
-        border-radius: var(--border-radius);
-        background: var(--bg-main) no-repeat;
-        margin: 0 2em;
-
-        position: sticky;
-        top: 5vh;
-
-        height: 90dvh;
+    .card-top {
         display: flex;
+        justify-content: space-between;
         align-items: center;
-        justify-content: center;
-
-        perspective: 1200px;
-
-        transform-origin: top center;
-        animation: rotateCardAway linear both;
-        animation-timeline: view();
-        animation-range: exit;
+        margin-bottom: 0.75rem;
+    }
+    .card-path {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--ink3);
+    }
+    .card-link {
+        font-family: var(--font-mono);
+        font-size: 0.7rem;
+        color: var(--blue);
+        text-decoration: none;
+    }
+    .card-link:hover {
+        text-decoration: underline;
+    }
+    .card-title {
+        font-family: var(--font-display);
+        font-size: 1.3rem;
+        color: var(--ink);
+        margin: 0 0 0.6rem;
+        line-height: 1.2;
+    }
+    .card-desc {
+        font-size: 0.875rem;
+        line-height: 1.7;
+        color: var(--ink2);
+        margin: 0 0 1rem;
+        flex: 1;
+    }
+    .card-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+        margin-top: auto;
     }
 
-    @keyframes rotateCardAway {
-        0% {
-            transform: scale(1) rotateX(0deg);
-            opacity: 1;
-            filter: blur(0px);
+    @media (max-width: 640px) {
+        .proj-list {
+            grid-template-columns: 1fr;
         }
-        100% {
-            transform: scale(0.8) rotateX(-45deg) translateY(-10%);
-            opacity: 0;
-            filter: blur(10px);
-            visibility: hidden;
-        }
-    }
-
-    @keyframes rotateCardIn {
-        0% {
-            transform: scale(0.5) rotateX(-45deg) translateY(-10%);
-            opacity: 0;
-            filter: blur(10px);
-        }
-        100% {
-            transform: scale(1) rotateX(0deg);
-            opacity: 1;
-            filter: blur(0px);
-        }
-    }
-
-    .card-content {
-        position: relative;
-        z-index: 2;
-        background: var(--bg-main);
-        padding: 2em;
-        border-radius: 8px;
-        text-align: center;
-        max-width: 50%;
-        border: 1px solid var(--bg-surface);
-    }
-
-    /* Fallback for Safari and Firefox */
-    @supports not (animation-timeline: view()) {
-        .project-card,
-        .card-content {
-            animation: none !important;
-            opacity: 1 !important;
-            transform: none !important;
-            filter: none !important;
-            visibility: visible !important;
-        }
-    }
-
-    .card-content img {
-        width: 35rem;
-        max-width: 100%;
-        border-radius: 12px;
-        margin: 1em 0;
-    }
-
-    .marquee-container {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        transform: translateY(-50%);
-        width: 100%;
-        overflow: hidden;
-        white-space: nowrap;
-        z-index: 0;
-        pointer-events: none;
-        opacity: 0.1;
-    }
-
-    .marquee-track {
-        display: inline-flex;
-        animation: scrollText 12s linear infinite;
-    }
-
-    .marquee-text {
-        font-size: 8rem;
-        font-weight: 900;
-        text-transform: uppercase;
-        padding-right: 2rem;
-    }
-
-    @keyframes scrollText {
-        0% {
-            transform: translateX(0);
-        }
-        100% {
-            transform: translateX(-50%);
+        #projects {
+            padding: 4rem 1.5rem;
         }
     }
 </style>
-
-<script>
-    const tracks = document.querySelectorAll(".marquee-track");
-
-    tracks.forEach((track) => {
-        const clone = track.innerHTML;
-        track.innerHTML += clone;
-    });
-</script>

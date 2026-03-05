@@ -1,0 +1,124 @@
+<script>
+    // Fallback for browsers that don't support animation-timeline: view()
+    // This adds an 'in-view' class when elements enter the viewport
+
+    if (!CSS.supports("animation-timeline", "view()")) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("in-view");
+                }
+            });
+        });
+
+        // Observe all animated elements
+        document
+            .querySelectorAll(
+                ".project-item, .tech-item, .experience-item, .contact-link, .section-title, .contact-content, #profile-section, #text-section",
+            )
+            .forEach((el) => {
+                observer.observe(el);
+            });
+    }
+</script>
+
+<style>
+    /* Fallback animations for browsers without animation-timeline: view() support */
+    @supports not (animation-timeline: view()) {
+        .project-item {
+            animation: slideUpIn 0.6s ease-out both !important;
+        }
+
+        .tech-item {
+            animation: scaleIn 0.6s ease-out both !important;
+        }
+
+        .experience-item {
+            animation: slideUpIn 0.6s ease-out both !important;
+        }
+
+        .contact-link {
+            animation: fadeIn 0.6s ease-out both !important;
+        }
+
+        .section-title {
+            animation: fadeInDown 0.6s ease-out both !important;
+        }
+
+        .contact-content {
+            animation: fadeIn 0.8s ease-out both !important;
+        }
+
+        #profile-section {
+            animation: slideInLeft 0.8s ease-out both !important;
+        }
+
+        #text-section {
+            animation: slideInRight 0.8s ease-out 0.1s both !important;
+        }
+
+        @keyframes slideUpIn {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes scaleIn {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+    }
+</style>

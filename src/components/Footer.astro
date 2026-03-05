@@ -1,35 +1,53 @@
 ---
-import Github from "./icons/github.astro";
+import SocialLinks from "./Social-links.astro";
 
-const today = new Date();
+const year = new Date().getFullYear();
 ---
 
 <footer>
-    &copy; {today.getFullYear()} Gerard Du Pre. All rights reserved.
-    <div class="social-links">
-        <a href="https://github.com/gerardPolloRebozado" target="_blank">
-            <Github />
-        </a>
+    <div class="foot-inner">
+        <span class="foot-copy">Gerard Du Pre &middot; {year}</span>
+        <SocialLinks />
     </div>
 </footer>
+
 <style>
     footer {
-        padding: 2em 1em 6em 1em;
-        background: linear-gradient(var(--bg-surface)) no-repeat;
-        color: var(--text-mutted);
-        text-align: center;
+        border-top: 1px solid var(--rule);
+        background: var(--paper);
+        padding: 2rem 2.5rem;
     }
-    .social-links {
+    .foot-inner {
+        max-width: 1200px;
+        margin: 0 auto;
         display: flex;
-        justify-content: center;
-        gap: 1em;
-        margin-top: 1em;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.5rem 2rem;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--ink3);
     }
-    .social-links a {
+    .foot-links {
+        display: flex;
+        gap: 1.5rem;
+    }
+    .foot-links a {
+        color: var(--ink3);
         text-decoration: none;
-        color: var(--text-mutted);
+        transition: color 0.2s;
     }
-    .social-links a:hover {
-        color: var(--text-primary);
+    .foot-links a:hover {
+        color: var(--ink);
+    }
+    @media (max-width: 640px) {
+        .foot-inner {
+            flex-direction: column;
+            text-align: center;
+        }
+        footer {
+            padding: 1.5rem;
+        }
     }
 </style>

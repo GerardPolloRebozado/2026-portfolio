@@ -1,0 +1,27 @@
+---
+import { getCachedCommits } from "../lib/github-commit-history";
+import { emojify } from "node-emoji";
+
+export const prerender = false;
+
+const token = import.meta.env.GITHUB_PAT;
+const username = "gerardPolloRebozado";
+
+const commits = await getCachedCommits(username, token);
+---
+
+{
+    commits && (
+        <div
+            class="git-log"
+            style="border-left:2px solid var(--rule);padding-left:0.75rem;margin-bottom:1.5rem;"
+        >
+            {commits.map((commit) => (
+                <div>
+                    <span class="git-hash"> {commit.shortHash} </span>{" "}
+                    <span class="git-msg"> {emojify(commit.message)} </span>
+                </div>
+            ))}
+        </div>
+    )
+}

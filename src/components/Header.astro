@@ -1,64 +1,168 @@
 ---
-import { SITE_TITLE } from "../consts";
-import HeaderLink from "./HeaderLink.astro";
-import "@fontsource-variable/manrope";
-import Github from "./icons/github.astro";
+import { Moon, Sun } from "@lucide/astro";
 ---
 
-<header>
-    <nav>
-        <h2><a href="/">{SITE_TITLE}</a></h2>
-        <div class="internal-links">
-            <HeaderLink href="/">Home</HeaderLink>
-            <HeaderLink href="/blog">Blog</HeaderLink>
-            <HeaderLink href="/about">About</HeaderLink>
-        </div>
-        <div class="social-links">
-            <a href="https://github.com/gerardPolloRebozado" target="_blank">
-                <Github />
-            </a>
-        </div>
-    </nav>
-</header>
-<style>
-    header {
-        margin: 0;
-        padding: 0 1em;
-        background: var(--bg-surface);
-        box-shadow: 0 2px 8px rgba(var(--primary), 5%);
-        height: 10dvh;
-    }
-    h2 {
-        margin: 0;
-        font-size: 1em;
-    }
+<!-- Custom cursor -->
+<div id="cur"></div>
+<div id="cur-o"></div>
 
-    h2 a,
-    h2 a.active {
-        text-decoration: none;
-    }
-    nav {
+<!-- Reading progress bar -->
+<div id="prog" style="width:0%"></div>
+
+<nav id="nav">
+    <a
+        href="/"
+        style="font-family:var(--font-display);font-size:1.05rem;color:var(--ink);letter-spacing:-0.01em;text-decoration:none;opacity:1;"
+    >
+        <em>Gerard Du Pre</em>
+    </a>
+
+    <!-- Desktop nav actions -->
+    <div class="nav-desktop">
+        <div class="nav-actions">
+            <button
+                id="theme-toggle"
+                class="toggle-btn"
+                aria-label="Toggle theme"
+            >
+                <span id="theme-sun">
+                    <Sun />
+                </span>
+                <span id="theme-moon" style="display:none"><Moon /></span>
+            </button>
+            <a href="mailto:hello@gerarddupre.dev" class="hire-btn">hire me</a>
+        </div>
+    </div>
+
+    <!-- Mobile buttons -->
+    <div class="nav-mobile-btns">
+        <button
+            id="theme-toggle-mob"
+            class="toggle-btn"
+            aria-label="Toggle theme"
+        >
+            <span id="theme-sun-mob">&#9728;</span>
+            <span id="theme-moon-mob" style="display:none">&#9789;</span>
+        </button>
+    </div>
+</nav>
+
+<style>
+    .nav-desktop {
+        margin-top: 1rem;
         display: flex;
         align-items: center;
-        justify-content: space-between;
+        gap: 2rem;
     }
-    nav a {
-        padding: 1em 0.5em;
-        color: var(--primary);
-        border-bottom: 4px solid transparent;
-        text-decoration: none;
-    }
-    nav a.active {
-        text-decoration: none;
-        border-bottom-color: var(--accent);
-    }
-    .social-links,
-    .social-links a {
-        display: flex;
-    }
-    @media (max-width: 720px) {
-        .social-links {
+    @media (max-width: 768px) {
+        .nav-desktop {
             display: none;
         }
     }
+
+    .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 1.5rem;
+    }
+
+    .hire-btn {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--blue);
+        border: 1px solid var(--blue);
+        border-radius: 2px;
+        padding: 0.35rem 0.85rem;
+        text-decoration: none;
+        transition: opacity 0.2s;
+    }
+    .hire-btn:hover {
+        opacity: 0.7;
+    }
+
+    .nav-mobile-btns {
+        display: none;
+        align-items: center;
+        gap: 0.75rem;
+    }
+    @media (max-width: 768px) {
+        .nav-mobile-btns {
+            display: flex;
+        }
+    }
 </style>
+
+<script>
+    // Custom cursor
+    const cur = document.getElementById("cur");
+    const curO = document.getElementById("cur-o");
+    document.addEventListener("mousemove", (e) => {
+        if (cur) {
+            cur.style.left = e.clientX + "px";
+            cur.style.top = e.clientY + "px";
+        }
+        if (curO) {
+            curO.style.left = e.clientX + "px";
+            curO.style.top = e.clientY + "px";
+        }
+    });
+
+    // Progress bar + sticky nav + fade-up
+    const prog = document.getElementById("prog");
+    function onScroll() {
+        const h = document.documentElement.scrollHeight - window.innerHeight;
+        if (prog)
+            prog.style.width = (h > 0 ? (window.scrollY / h) * 100 : 0) + "%";
+        const nav = document.getElementById("nav");
+        if (nav) nav.classList.toggle("stuck", window.scrollY > 40);
+        document.querySelectorAll(".fade-up").forEach((el) => {
+            if (el.getBoundingClientRect().top < window.innerHeight - 50)
+                el.classList.add("show");
+        });
+    }
+    window.addEventListener("scroll", onScroll, { passive: true });
+    setTimeout(
+        () =>
+            document.querySelectorAll(".fade-up").forEach((el) => {
+                if (el.getBoundingClientRect().top < window.innerHeight - 50)
+                    el.classList.add("show");
+            }),
+        80,
+    );
+
+    // Theme toggle
+    function getTheme() {
+        return document.documentElement.getAttribute("data-theme") || "light";
+    }
+    function setTheme(t: string) {
+        document.documentElement.setAttribute("data-theme", t);
+        localStorage.setItem("theme", t);
+        updateIcons(t);
+    }
+    function updateIcons(t: string) {
+        const dark = t === "dark";
+        const ids = [
+            ["theme-sun", "theme-moon"],
+            ["theme-sun-mob", "theme-moon-mob"],
+        ];
+        ids.forEach(([s, m]) => {
+            const sun = document.getElementById(s);
+            const moon = document.getElementById(m);
+            if (sun) sun.style.display = dark ? "none" : "inline";
+            if (moon) moon.style.display = dark ? "inline" : "none";
+        });
+    }
+    updateIcons(getTheme());
+    document
+        .getElementById("theme-toggle")
+        ?.addEventListener("click", () =>
+            setTheme(getTheme() === "dark" ? "light" : "dark"),
+        );
+    document
+        .getElementById("theme-toggle-mob")
+        ?.addEventListener("click", () =>
+            setTheme(getTheme() === "dark" ? "light" : "dark"),
+        );
+</script>

@@ -1,0 +1,220 @@
+---
+
+---
+
+<section id="about">
+    <div class="about-inner">
+        <div class="sep fade-up">
+            <span class="sep-num">01 —</span>
+            <span class="sep-label">About</span>
+            <span class="sep-rule"></span>
+        </div>
+
+        <div class="about-grid">
+            <!-- Bio -->
+            <div class="about-bio fade-up">
+                <p>
+                    I'm Gerard Du Pre, a software engineer who enjoys building
+                    and running software that makes life easier. I'm especially
+                    into self-hosting projects, where I get to combine my coding
+                    skills with server management and automation. I've worked
+                    with a range of technologies, from C and Go to JavaScript,
+                    TypeScript, and Next.js, and I like learning new tools that
+                    help me solve problems more efficiently.
+                </p>
+
+                <p>
+                    I write a lot of <span class="chip">TypeScript</span> and <span
+                        class="chip">C/C++</span
+                    > and I'm currently studying at the European Institute of Technology
+                    (Epitech), where I'm honing my software engineering skills and
+                    diving deeper into computer science concepts. I have a passion
+                    for open source software and believe in the power of community-driven
+                    projects to create lasting impact.
+                </p>
+                <p>
+                    When I'm not coding, you can find me playing video games or
+                    skiing in the mountains. I'm always looking for new
+                    challenges and opportunities to grow as a developer, so feel
+                    free to reach out if you want to collaborate on a project or
+                    just chat about tech!
+                </p>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="about-sidebar fade-up" style="animation-delay:0.1s">
+                <div class="sidebar-block">
+                    <p class="sidebar-label">Stack</p>
+                    <div class="chips-wrap">
+                        <span class="chip">TypeScript</span>
+                        <span class="chip">React</span>
+                        <span class="chip">Next.js</span>
+                        <span class="chip">Node.js</span>
+                        <span class="chip">PostgreSQL</span>
+                        <span class="chip">Docker</span>
+                        <span class="chip">Linux</span>
+                        <span class="chip">Astro</span>
+                        <span class="chip">Tailwind</span>
+                        <span class="chip">Git</span>
+                    </div>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-label">Now</p>
+                    <div class="now-list">
+                        <div class="now-item">
+                            <span class="now-arrow">→</span>
+                            <span>Building this portfolio with Astro</span>
+                        </div>
+                        <div class="now-item">
+                            <span class="now-arrow">→</span>
+                            <span>Self-hosting more of my own stack</span>
+                        </div>
+                        <div class="now-item">
+                            <span class="now-arrow">→</span>
+                            <span
+                                >Mantainer of <a
+                                    href="https://github.com/GerardPolloRebozado/social-to-mealie"
+                                    target="_blank">Social to Mealie</a
+                                > and <a
+                                    href="https://github.com/GerardPolloRebozado/navifetch"
+                                    target="_blank">navifetch</a
+                                ></span
+                            >
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sidebar-block">
+                    <p class="sidebar-label">Misc</p>
+                    <div class="misc-list">
+                        <div class="misc-row">
+                            <span class="misc-key">editor</span>
+                            <span class="misc-sep">·</span>
+                            <span class="misc-val">JetBrains + IdeaVim</span>
+                        </div>
+                        <div class="misc-row">
+                            <span class="misc-key">OS</span>
+                            <span class="misc-sep">·</span>
+                            <span class="misc-val">I use arch btw</span>
+                        </div>
+                        <div class="misc-row">
+                            <span class="misc-key">philosophy</span>
+                            <span class="misc-sep">·</span>
+                            <span class="misc-val"
+                                >boring code &gt; clever code</span
+                            >
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<style>
+    #about {
+        padding: 6rem 2.5rem;
+        background: var(--paper);
+    }
+
+    .about-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+
+    .about-grid {
+        display: grid;
+        grid-template-columns: 7fr 5fr;
+        gap: 4rem;
+    }
+
+    @media (max-width: 900px) {
+        .about-grid {
+            grid-template-columns: 1fr;
+            gap: 3rem;
+        }
+        #about {
+            padding: 4rem 1.5rem;
+        }
+    }
+
+    .about-bio {
+        font-size: 0.95rem;
+        line-height: 1.85;
+        color: var(--ink2);
+    }
+    .about-bio p {
+        margin-bottom: 1.25rem;
+    }
+
+    .chips-wrap {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+
+    .sidebar-block {
+        margin-bottom: 1.75rem;
+        padding-bottom: 1.75rem;
+        border-bottom: 1px solid var(--rule);
+    }
+    .sidebar-block:last-child {
+        border-bottom: none;
+        margin-bottom: 0;
+    }
+
+    .sidebar-label {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        text-transform: uppercase;
+        letter-spacing: 0.12em;
+        color: var(--ink3);
+        margin: 0 0 0.75rem;
+    }
+
+    .now-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .now-item {
+        display: flex;
+        gap: 0.5rem;
+        align-items: flex-start;
+        font-size: 0.88rem;
+        color: var(--ink2);
+    }
+
+    .now-arrow {
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+        color: var(--blue);
+        margin-top: 0.1rem;
+        flex-shrink: 0;
+    }
+
+    .misc-list {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    .misc-row {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        font-family: var(--font-mono);
+        font-size: 0.72rem;
+    }
+    .misc-key {
+        color: var(--ink3);
+    }
+    .misc-sep {
+        color: var(--rule);
+    }
+    .misc-val {
+        color: var(--ink2);
+    }
+</style>

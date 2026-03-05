@@ -1,0 +1,175 @@
+---
+const experiences = [
+    {
+        period: "Jun 2025 → Dec 2025",
+        role: "Fullstack Developer (Internship)",
+        company: "MigaLabs",
+        location: "Barcelona",
+        current: false,
+        description:
+            "Created a blockchain explorer, building Next.js frontends (React + TypeScript) and Go backend services, focusing on performance and scalable data processing to deliver production-ready features.",
+        tags: [
+            "Next.js",
+            "React",
+            "TypeScript",
+            "Go",
+            "ClickhouseDB",
+            "PostgreSQL",
+            "Docker",
+            "System Administration",
+            "Cloudflare",
+        ],
+    },
+    {
+        period: "Jul 2023 → Dec 2023",
+        role: "Wordpress Developer (Internship)",
+        company: "Indian Webs",
+        location: "Barcelona",
+        current: false,
+        description:
+            "Assisted in developing and maintaining WordPress websites for various clients. Gained experience in theme customization, plugin development, and site optimization while collaborating with a team of developers and designers to deliver high-quality web solutions.",
+        tags: ["WordPress", "PHP", "HTML/CSS", "JavaScript"],
+    },
+    {
+        period: "Nov 2021 → Sept 2022",
+        role: "Computer Equipment Repair Technician (Internship)",
+        company: "Intecat",
+        location: "Sabadell",
+        current: false,
+        description:
+            "Responsible for diagnosing and repairing hardware and software issues in a wide range of Apple devices, including latops, phones, and wearables. Provided technical support to customers, ensuring timely resolution of issues and maintaining high levels of customer satisfaction.",
+        tags: [
+            "Apple",
+            "Technical Support",
+            "Hardware Repair",
+            "Customer Service",
+        ],
+    },
+];
+---
+
+<section id="experience">
+    <div class="exp-inner">
+        <div class="sep fade-up">
+            <span class="sep-num">02 —</span>
+            <span class="sep-label">Experience</span>
+            <span class="sep-rule"></span>
+        </div>
+        <div class="exp-list fade-up">
+            {
+                experiences.map((exp) => (
+                    <div class="exp-item">
+                        <div class="exp-year">{exp.period}</div>
+                        <div class="exp-content">
+                            <div class="exp-header">
+                                <h3 class="exp-role">{exp.role}</h3>
+                                {exp.current && (
+                                    <span class="exp-badge">current</span>
+                                )}
+                            </div>
+                            <p class="exp-company">
+                                {exp.company} · {exp.location}
+                            </p>
+                            <p class="exp-desc">{exp.description}</p>
+                            <div class="exp-tags">
+                                {exp.tags.map((tag) => (
+                                    <span class="chip">{tag}</span>
+                                ))}
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>
+
+<style>
+    #experience {
+        padding: 6rem 2.5rem;
+        background: var(--paper2);
+    }
+    .exp-inner {
+        max-width: 1200px;
+        margin: 0 auto;
+    }
+    .exp-list {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .exp-item {
+        display: grid;
+        grid-template-columns: 6rem 1fr;
+        gap: 0 1.5rem;
+        padding: 1.75rem 0;
+        border-bottom: 1px solid var(--rule);
+    }
+    .exp-item:last-child {
+        border-bottom: none;
+    }
+
+    @media (max-width: 640px) {
+        .exp-item {
+            grid-template-columns: 1fr;
+            gap: 0.25rem;
+        }
+        #experience {
+            padding: 4rem 1.5rem;
+        }
+    }
+
+    .exp-year {
+        font-family: var(--font-mono);
+        font-size: 0.68rem;
+        color: var(--ink3);
+        padding-top: 0.25rem;
+        line-height: 1.6;
+        white-space: pre-line;
+    }
+
+    .exp-header {
+        display: flex;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 0.75rem;
+        margin-bottom: 0.25rem;
+    }
+
+    .exp-role {
+        font-family: var(--font-display);
+        font-size: 1.25rem;
+        color: var(--ink);
+        margin: 0;
+        line-height: 1.2;
+    }
+
+    .exp-badge {
+        font-family: var(--font-mono);
+        font-size: 0.62rem;
+        color: var(--blue);
+        border: 1px solid var(--blue);
+        border-radius: 2px;
+        padding: 1px 6px;
+        background: var(--bluefaint);
+        letter-spacing: 0.05em;
+    }
+
+    .exp-company {
+        font-size: 0.85rem;
+        font-weight: 600;
+        color: var(--ink3);
+        margin: 0 0 0.75rem;
+    }
+    .exp-desc {
+        font-size: 0.9rem;
+        line-height: 1.75;
+        color: var(--ink2);
+        margin: 0 0 1rem;
+    }
+    .exp-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.4rem;
+    }
+</style>

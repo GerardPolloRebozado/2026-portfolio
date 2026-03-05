@@ -1,0 +1,75 @@
+---
+import SocialLinks from "./Social-links.astro";
+---
+
+<section id="contact">
+    <div class="contact-inner fade-up">
+        <p class="orn-rule">get in touch</p>
+        <h2 class="contact-heading">
+            Let&apos;s build <em>something.</em>
+        </h2>
+        <p class="contact-sub">
+            Have a project in mind, want to collaborate, or just want to say
+            hello? My inbox is always open.
+        </p>
+        <SocialLinks />
+    </div>
+</section>
+
+<style>
+    #contact {
+        padding: 6rem 2.5rem;
+        background: var(--paper2);
+    }
+    .contact-inner {
+        max-width: 760px;
+        margin: 0 auto;
+        text-align: center;
+    }
+    .contact-heading {
+        font-family: var(--font-display);
+        font-size: clamp(2.5rem, 6vw, 4.5rem);
+        line-height: 1.05;
+        color: var(--ink);
+        margin: 1rem 0 1.25rem;
+    }
+    .contact-heading em {
+        font-style: italic;
+        color: var(--blue);
+    }
+    .contact-sub {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--ink2);
+        margin: 0 0 2rem;
+    }
+    .contact-email {
+        display: inline-block;
+        font-family: var(--font-mono);
+        font-size: 1.05rem;
+        color: var(--blue);
+        text-decoration: none;
+        border-bottom: 1px solid currentColor;
+        padding-bottom: 2px;
+        transition: opacity 0.2s;
+        margin-bottom: 2.5rem;
+    }
+    .contact-email:hover {
+        opacity: 0.7;
+    }
+    .contact-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+    }
+    .contact-links a {
+        font-size: 0.85rem;
+        font-family: var(--font-mono);
+        color: var(--ink3);
+        text-decoration: none;
+        transition: color 0.2s;
+    }
+    .contact-links a:hover {
+        color: var(--ink);
+    }
+</style>
