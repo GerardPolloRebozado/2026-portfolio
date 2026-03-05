@@ -27,10 +27,15 @@ const { title, description, image = FallbackImage } = Astro.props;
     title={SITE_TITLE}
     href={new URL("rss.xml", Astro.site)}
 />
-<script
-    src="https://rybbit.pollorebozado.com/api/script.js"
-    data-site-id="c0c15dfacb2c"
-    defer></script>
+{
+    process.env.NODE_ENV === "production" && (
+        <script
+            src="https://rybbit.pollorebozado.com/api/script.js"
+            data-site-id="5182013799b2"
+            defer
+        />
+    )
+}
 <meta name="generator" content={Astro.generator} />
 
 <!-- Google Fonts -->
