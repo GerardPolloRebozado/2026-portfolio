@@ -1,16 +1,13 @@
-## Add your compose file here
 services:
-  hello_world:
-    image: hello-world
-    # networks:
-    #   - default
-    # ports:
-    #   - 3000:3000
-    # volumes:
-    #   - data:/data
-
-# networks:
-#   default: {}
-
-# volumes:
-#   data:
+  web-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: 2026-portfolio
+    restart: always
+    ports:
+      - "4321:4321"
+    environment:
+      - HOST=0.0.0.0
+      - PORT=4321
+      - NODE_ENV=production
