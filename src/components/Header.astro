@@ -15,72 +15,52 @@ const t = useTranslations(lang as "en" | "es");
 
 <nav id="nav">
     <a
-        href="/"
+        href={`/${lang}/`}
         style="font-family:var(--font-display);font-size:1.05rem;color:var(--ink);letter-spacing:-0.01em;text-decoration:none;opacity:1;"
     >
         <em>{t("nav.name")}</em>
     </a>
 
-    <!-- Desktop nav actions -->
-    <div class="nav-desktop">
-        <div class="nav-actions">
-            {
-                lang === "en" ? (
-                    <a
-                        href="/es"
-                        style="font-size:0.85rem;color:var(--ink2);text-decoration:none;transition:opacity 0.2s;"
-                    >
-                        Español
-                    </a>
-                ) : (
-                    <a
-                        href="/en"
-                        style="font-size:0.85rem;color:var(--ink2);text-decoration:none;transition:opacity 0.2s;"
-                    >
-                        English
-                    </a>
-                )
-            }
-            <button
-                id="theme-toggle"
-                class="toggle-btn"
-                aria-label={t("nav.theme")}
-            >
-                <span id="theme-sun">
-                    <Sun />
-                </span>
-                <span id="theme-moon" style="display:none"><Moon /></span>
-            </button>
-            <a href="mailto:hello@gerarddupre.dev" class="hire-btn"
-                >{t("nav.hire")}</a
-            >
-        </div>
-    </div>
-
-    <!-- Mobile buttons -->
-    <div class="nav-mobile-btns">
+    <!-- nav actions -->
+    <div class="nav-actions">
+        {
+            lang === "en" ? (
+                <a
+                    href="/es"
+                    style="font-size:0.85rem;color:var(--ink2);text-decoration:none;transition:opacity 0.2s;"
+                >
+                    Español
+                </a>
+            ) : (
+                <a
+                    href="/en"
+                    style="font-size:0.85rem;color:var(--ink2);text-decoration:none;transition:opacity 0.2s;"
+                >
+                    English
+                </a>
+            )
+        }
         <button
-            id="theme-toggle-mob"
+            id="theme-toggle"
             class="toggle-btn"
             aria-label={t("nav.theme")}
         >
-            <span id="theme-sun-mob">&#9728;</span>
-            <span id="theme-moon-mob" style="display:none">&#9789;</span>
+            <span id="theme-sun">
+                <Sun />
+            </span>
+            <span id="theme-moon" style="display:none"><Moon /></span>
         </button>
+        <a href="mailto:hello@gerarddupre.dev" class="hire-btn"
+            >{t("nav.hire")}</a
+        >
     </div>
 </nav>
 
 <style>
-    .nav-desktop {
-        margin-top: 1rem;
+    #nav {
         display: flex;
         align-items: center;
         gap: 2rem;
-    }
-    @media (max-width: 768px) {
-        .nav-desktop {
-            display: none;
-        }
     }
 
     .nav-actions {
@@ -105,14 +85,9 @@ const t = useTranslations(lang as "en" | "es");
         opacity: 0.7;
     }
 
-    .nav-mobile-btns {
-        display: none;
-        align-items: center;
-        gap: 0.75rem;
-    }
     @media (max-width: 768px) {
-        .nav-mobile-btns {
-            display: flex;
+        .hire-btn {
+            display: none;
         }
     }
 </style>

@@ -2,21 +2,31 @@
 import { getCollection } from "astro:content";
 import BaseHead from "../../../components/BaseHead.astro";
 import Footer from "../../../components/Footer.astro";
-import FormattedDate from "../../../components/FormattedDate.astro";
 import Header from "../../../components/Header.astro";
+import BlogList from "../../../components/BlogList.astro";
 import { SITE_DESCRIPTION, SITE_TITLE } from "../../../consts";
-
-const posts = (await getCollection("blog")).sort(
-    (a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf(),
-);
+import { useTranslations } from "../../../i18n/ui";
 
 export function getStaticPaths() {
     return [{ params: { lang: "en" } }, { params: { lang: "es" } }];
 }
+
+const { lang } = Astro.params as { lang: "en" | "es" };
+const t = useTranslations(lang);
+
+const pageSize = 5;
+const allPosts = (
+    await getCollection("blog", ({ id }) => {
+        return id.startsWith(`${lang}/`);
+    })
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf());
+
+const posts = allPosts.slice(0, pageSize);
+const totalPages = Math.ceil(allPosts.length / pageSize);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang={lang}>
     <head>
         <BaseHead
             title={`Blog — ${SITE_TITLE}`}
@@ -26,40 +36,14 @@ export function getStaticPaths() {
     <body>
         <Header />
         <main>
-            <div class="blog-inner">
-                <div class="sep">
-                    <span class="sep-num">Blog —</span>
-                    <span class="sep-label">Writing</span>
-                    <span class="sep-rule"></span>
-                </div>
-                <ol class="post-list">
-                    {
-                        posts.map((post, i) => (
-                            <li class="post-row">
-                                <span class="post-num">
-                                    {String(i + 1).padStart(2, "0")}
-                                </span>
-                                <div class="post-body">
-                                    <a
-                                        href={`/blog/${post.id}/`}
-                                        class="post-title"
-                                    >
-                                        {post.data.title}
-                                    </a>
-                                    {post.data.description && (
-                                        <p class="post-excerpt">
-                                            {post.data.description}
-                                        </p>
-                                    )}
-                                </div>
-                                <span class="post-date">
-                                    <FormattedDate date={post.data.pubDate} />
-                                </span>
-                            </li>
-                        ))
-                    }
-                </ol>
-            </div>
+            <BlogList
+                posts={posts}
+                currentPage={1}
+                totalPages={totalPages}
+                prevUrl={undefined}
+                nextUrl={totalPages > 1 ? `/${lang}/blog/2/` : undefined}
+                lang={lang}
+            />
         </main>
         <Footer />
     </body>
@@ -69,70 +53,5 @@ export function getStaticPaths() {
     main {
         background: var(--paper);
         min-height: 100vh;
-    }
-    .blog-inner {
-        max-width: 860px;
-        margin: 0 auto;
-        padding: 6rem 2rem;
-    }
-    .post-list {
-        list-style: none;
-        padding: 0;
-        margin: 2rem 0 0;
-    }
-
-    .post-row {
-        display: grid;
-        grid-template-columns: 2.5rem 1fr auto;
-        align-items: start;
-        gap: 0 1.5rem;
-        padding: 1.25rem 0;
-        border-bottom: 1px solid var(--rule);
-    }
-
-    .post-num {
-        font-family: var(--font-mono);
-        font-size: 0.68rem;
-        color: var(--ink3);
-        padding-top: 0.2rem;
-    }
-
-    .post-title {
-        font-family: var(--font-display);
-        font-size: 1.1rem;
-        color: var(--ink);
-        text-decoration: none;
-        line-height: 1.3;
-    }
-    .post-title:hover {
-        color: var(--blue);
-    }
-
-    .post-excerpt {
-        font-size: 0.85rem;
-        color: var(--ink2);
-        margin: 0.3rem 0 0;
-        line-height: 1.6;
-    }
-
-    .post-date {
-        font-family: var(--font-mono);
-        font-size: 0.68rem;
-        color: var(--ink3);
-        white-space: nowrap;
-        padding-top: 0.3rem;
-    }
-
-    @media (max-width: 640px) {
-        .post-row {
-            grid-template-columns: 1fr;
-            gap: 0.2rem;
-        }
-        .post-date {
-            display: none;
-        }
-        .blog-inner {
-            padding: 4rem 1.5rem;
-        }
     }
 </style>

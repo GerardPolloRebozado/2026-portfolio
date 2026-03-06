@@ -2,37 +2,14 @@
 import GitHistory from "./github-history.astro";
 import SocialLinks from "./Social-links.astro";
 import { useTranslations } from "../i18n/ui";
-
+import { skills } from "../contants";
 const { lang } = Astro.params;
 const t = useTranslations(lang as "en" | "es");
-
-const skills = [
-    "TypeScript",
-    "React",
-    "Next.js",
-    "Node.js",
-    "PostgreSQL",
-    "Docker",
-    "self-hosting",
-    "open source",
-    "Linux",
-    "Astro",
-    "C",
-    "C++",
-    "Go",
-    "Git",
-    "CSS",
-    "Tailwind",
-    "Vim",
-    "Jetbrains",
-    "Cloudflare",
-    "Payload CMS",
-];
 ---
 
 <section id="hero">
     <!-- Marquee stripe -->
-    <div class="marquee-stripe">
+    <!-- <div class="marquee-stripe">
         <div class="marquee-inner">
             <span class="marquee-set">
                 {
@@ -55,13 +32,12 @@ const skills = [
                 }
             </span>
         </div>
-    </div>
+    </div> -->
     <div class="hero-inner">
         <div class="hero-grid">
             <!-- Left: name -->
             <div class="hero-left">
-                <h1 class="hero-name fade-up show" set:html={t("hero.name")}>
-                </h1>
+                <h1 class="hero-name fade-up show" set:html={t("hero.name")} />
             </div>
 
             <!-- Right: bio, git log, CTAs -->
@@ -72,8 +48,12 @@ const skills = [
                 </p>
                 <GitHistory />
                 <div class="hero-ctas">
-                    <a href="#projects" class="cta-primary">{t("hero.cta_projects")}</a>
-                    <a href="/blog" class="cta-secondary">{t("hero.cta_blog")}</a>
+                    <a href="#projects" class="cta-primary"
+                        >{t("hero.cta_projects")}</a
+                    >
+                    <a href={`/${lang}/blog`} class="cta-secondary"
+                        >{t("hero.cta_blog")}</a
+                    >
                 </div>
             </div>
         </div>
@@ -89,6 +69,7 @@ const skills = [
             min-height: 100svh;
             display: flex;
             flex-direction: column;
+            justify-content: space-between;
         }
 
         .marquee-stripe {
@@ -130,11 +111,11 @@ const skills = [
             flex: 1;
             display: flex;
             flex-direction: column;
-            justify-content: flex-end;
             max-width: 1300px;
             margin: 0 auto;
             width: 100%;
             padding: 10rem 2.5rem 4rem;
+            justify-content: center;
         }
 
         .hero-grid {
@@ -193,10 +174,11 @@ const skills = [
             letter-spacing: 0.08em;
             padding: 0.55rem 1.25rem;
             background: var(--blue);
-            color: #fff;
+            color: var(--ink);
             border-radius: 2px;
             text-decoration: none;
             transition: opacity 0.2s;
+            opacity: 0.9;
         }
         .cta-primary:hover {
             opacity: 0.8;
@@ -220,7 +202,6 @@ const skills = [
         .hero-footer {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             flex-wrap: wrap;
             gap: 1rem;
             padding-top: 1.25rem;

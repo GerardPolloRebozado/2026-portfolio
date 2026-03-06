@@ -9,7 +9,7 @@ const blog = defineCollection({
             description: z.string(),
             pubDate: z.coerce.date(),
             updatedDate: z.coerce.date().optional(),
-            heroImage: image().optional(),
+            heroImage: z.string().optional(),
         }),
 });
 
@@ -26,7 +26,10 @@ const projects = defineCollection({
 });
 
 const experience = defineCollection({
-    loader: glob({ base: "./src/content/experience", pattern: "**/*.{md,mdx}" }),
+    loader: glob({
+        base: "./src/content/experience",
+        pattern: "**/*.{md,mdx}",
+    }),
     schema: () =>
         z.object({
             period: z.string(),

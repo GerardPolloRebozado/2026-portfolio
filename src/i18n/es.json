@@ -55,5 +55,10 @@
   "phrases.2": "Hablo con los ordenadores, a veces me ignoran.",
   "phrases.3": "Tengo una relación de amor-odio con los bugs: me encanta aplastarlos, pero siempre vuelven.",
   "phrases.4": "Escribo código que incluso mi yo del futuro podrá entender.",
-  "phrases.5": "Creo en el poder de un buen archivo README."
+  "phrases.5": "Creo en el poder de un buen archivo README.",
+
+  "blog.updated": "actualizado",
+  "blog.prev": "← anterior",
+  "blog.next": "siguiente →",
+  "blog.no_posts": "No se encontraron artículos en este idioma."
 }

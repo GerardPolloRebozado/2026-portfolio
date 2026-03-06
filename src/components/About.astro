@@ -1,4 +1,5 @@
 ---
+import { skills } from "../contants";
 import { useTranslations } from "../i18n/ui";
 import Phrases from "./Phrases.astro";
 
@@ -32,16 +33,11 @@ const t = useTranslations(lang as "en" | "es");
                 <div class="sidebar-block">
                     <p class="sidebar-label">{t("about.stack")}</p>
                     <div class="chips-wrap">
-                        <span class="chip">TypeScript</span>
-                        <span class="chip">React</span>
-                        <span class="chip">Next.js</span>
-                        <span class="chip">Node.js</span>
-                        <span class="chip">PostgreSQL</span>
-                        <span class="chip">Docker</span>
-                        <span class="chip">Linux</span>
-                        <span class="chip">Astro</span>
-                        <span class="chip">Tailwind</span>
-                        <span class="chip">Git</span>
+                        {
+                            skills.map((skill) => (
+                                <span class="chip">{skill}</span>
+                            ))
+                        }
                     </div>
                 </div>
 
