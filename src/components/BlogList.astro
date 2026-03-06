@@ -37,19 +37,16 @@ const t = useTranslations(lang);
                         <span class="post-num">
                             {String(postNum).padStart(2, "0")}
                         </span>
-                        <div class="post-body">
-                            <a
-                                href={`/${lang}/blog/${slug}/`}
-                                class="post-title"
-                            >
-                                {post.data.title}
-                            </a>
-                            {post.data.description && (
-                                <p class="post-excerpt">
-                                    {post.data.description}
-                                </p>
-                            )}
-                        </div>
+                        <a href={`/${lang}/blog/${slug}/`} class="post-title">
+                            <span class="post-title">
+                                <div class="post-body">{post.data.title}</div>
+                                {post.data.description && (
+                                    <p class="post-excerpt">
+                                        {post.data.description}
+                                    </p>
+                                )}
+                            </span>
+                        </a>
                         <span class="post-date">
                             <FormattedDate date={post.data.pubDate} />
                         </span>

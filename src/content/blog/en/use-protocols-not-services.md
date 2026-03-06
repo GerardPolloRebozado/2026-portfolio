@@ -5,11 +5,11 @@ pubDate: "2026-03-06"
 heroImage: "https://assets.gerarddupre.dev/blog/use-protocols-not-services.svg"
 ---
 
-The modern internet is becoming less anonymous and far more centralized. We are increasingly dependent on a handful of large companies that provide us with "free" services in exchange for our personal data.
+The modern internet is becoming less anonymous and far more centralized. We are increasingly dependent on a small group of large companies that provide us with "free" services in exchange for our personal data.
 
 The internet was originally designed without built-in identity at the protocol level. However, in practice, users today are tracked endlessly through IP addresses, cookies, mandatory accounts, and device fingerprints. Modern services connect our activity to persistent identities, using that data to serve highly personalized ads and keep us hooked to their platforms.
 
-This is a massive problem. It gives these mega-corporations enormous power over what we see, read, and buy. Furthermore, these closed services are rarely interoperable. They trap your data in a walled garden, making it incredibly hard to switch providers when you are unhappy with how you are being treated.
+This is a problem because it gives these mega-corporations enormous power over what we see, read, and buy. Furthermore, these closed services are rarely interoperable. They trap your data in a walled garden, making it incredibly hard to switch providers when you are unhappy with how you are being treated.
 
 In the early days of the internet, interactions were built on open protocols and shared standards that let different systems talk to each other. Today, our digital lives are locked behind proprietary services that refuse to share.
 
@@ -30,6 +30,8 @@ When you are locked into a closed service, you are entirely at their mercy. A re
 Because Discord is a centralized service, users had no choice but to comply or lose access to their communities. Reports later indicated that more than 70,000 sensitive verification images were exposed in a third-party moderation system breach. This pushed many people to look for safer alternatives.
 
 However, when people leave a platform like Discord, they often just jump ship to another closed service. Instead, we should be adopting open protocols, which permanently eliminate this kind of long-term vendor lock-in.
+
+[Source](https://proton.me/blog/discord-age-verfication-breach)
 
 ## Censorship and control
 
@@ -74,7 +76,7 @@ Look for alternatives to Gmail, Outlook, or iCloud, and start using them. You do
 
 ## Conclusion
 
-I do not use all of these perfectly yet, and I haven't abandoned every major service overnight. For example, YouTube is still a massive platform and I have not found a complete replacement for it yet.
+I do not use all of these protocols, and I haven't abandoned every major service overnight. For example, YouTube is still a massive platform and I have not found a complete replacement for it yet.
 
 But I am making the shift. I stopped using Discord entirely and migrated to Matrix, which I currently self-host using tuwunel (though self-hosting is entirely optional). Some of my friends use Matrix with me now and they aren't tech-savvy, but because the modern apps are so polished, they use it without any problems at all.
 

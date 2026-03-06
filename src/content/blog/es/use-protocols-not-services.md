@@ -1,15 +1,15 @@
 ---
 title: "Usa protocolos, no servicios"
-description: "Internet moderno está lleno de servicios que generan vendor lock-in. Es hora de recuperar nuestra libertad."
+description: "El internet moderno está lleno de servicios que generan vendor lock-in. Es hora de recuperar nuestra libertad."
 pubDate: "2026-03-06"
 heroImage: "https://assets.gerarddupre.dev/blog/use-protocols-not-services.svg"
 ---
 
-Internet moderno se está volviendo menos anónimo y mucho más centralizado. Dependemos cada vez más de un puñado de grandes empresas que nos ofrecen “servicios” gratuitos a cambio de nuestros datos personales.
+El internet moderno se está volviendo menos anónimo y mucho más centralizado. Dependemos cada vez más de unas pocas grandes empresas que nos ofrecen "servicios gratuitos" a cambio de nuestros datos personales.
 
 El internet fue diseñado originalmente sin identidad incorporada a nivel de protocolo. Sin embargo, en la práctica, hoy en día los usuarios somos rastreados sin cesar mediante direcciones IP, cookies, cuentas obligatorias y huellas del dispositivo. Los servicios modernos conectan nuestra actividad a identidades persistentes, usan esos datos para mostrarnos anuncios hiperpersonalizados y mantenernos enganchados a sus plataformas.
 
-Esto es un problema enorme. Otorga a estas megaempresas un poder enorme sobre lo que vemos, leemos y compramos. Además, estos servicios cerrados rara vez son interoperables. Atrapan tus datos en sus servicios, haciendo increíblemente difícil cambiar de proveedor cuando no estás satisfecho.
+Eso genera un problema, ya que otorga a estas megaempresas un gran poder sobre lo que vemos, leemos y compramos. Además, estos servicios cerrados rara vez son interoperables. Atrapan tus datos en sus servicios, haciendo increíblemente difícil cambiar de proveedor cuando no estás satisfecho.
 
 En los primeros días de internet, las interacciones se construían sobre protocolos abiertos y estándares compartidos que permitían a diferentes sistemas comunicarse entre sí. Hoy en día, nuestras vidas digitales están encerradas tras servicios propietarios que se niegan a compartir.
 
@@ -31,15 +31,21 @@ Porque Discord es un servicio centralizado, los usuarios no tuvieron otra opció
 
 Sin embargo, cuando la gente abandona una plataforma como Discord, a menudo simplemente salta a otro servicio cerrado. En su lugar, deberíamos adoptar protocolos abiertos, que eliminan permanentemente este tipo de vendor lock-in a largo plazo.
 
+[Fuente](https://proton.me/blog/discord-age-verfication-breach)
+
 ## Censura y control
 
 Los servicios cerrados facilitan enormemente que gobiernos y empresas rastreen a los usuarios y censuren contenido. Si un gobierno quiere silenciar un movimiento, solo tiene que ordenar a una sola empresa que desconecte algo o bloquear un único dominio.
 
 Vemos cada vez más intentos de gobiernos y corporaciones por ejercer este control:
 
-**Exceso de poder gubernamental (Chat Control):** La Unión Europea ha impulsado de forma agresiva la legislación de “Chat Control” (fightchatcontrol.eu), que amenaza con obligar al escaneo masivo de mensajes privados, matando de facto el cifrado de extremo a extremo. Si se aprueba, servicios centralizados como WhatsApp o Discord simplemente se verían forzados a cumplir, escaneando la vida privada de todos.
+#### Exceso de poder gubernamental (Chat Control)
 
-**Censura corporativa (La Liga):** En España, La Liga ha emprendido campañas antipiratería extremadamente agresivas, presionando a tribunales e ISP para bloquear dominios, aplicaciones y plataformas con muy poca supervisión. Cuando sitios legítimos quedan atrapados en la red, los usuarios de servicios centralizados pierden el acceso al instante. Puedes leer más sobre esto en [La Liga Gate](https://laligagate.com/).
+La Unión Europea ha impulsado de forma agresiva la legislación de “Chat Control” (fightchatcontrol.eu), que amenaza con obligar al escaneo masivo de mensajes privados, matando de facto el cifrado de extremo a extremo. Si se aprueba, servicios centralizados como WhatsApp o Discord simplemente se verían forzados a cumplir, escaneando la vida privada de todos.
+
+#### Censura Censura corporativa (La Liga)
+
+En España, La Liga ha emprendido campañas antipiratería extremadamente agresivas, presionando a tribunales e ISP para bloquear dominios, aplicaciones y plataformas con muy poca supervisión. Cuando sitios legítimos quedan atrapados en la red, los usuarios de servicios centralizados pierden el acceso al instante. Puedes leer más sobre esto en [La Liga Gate](https://laligagate.com/).
 
 Los protocolos solucionan esto. Los protocolos abiertos son descentralizados por diseño. Como cualquiera puede implementar su propio servidor o cliente, no hay una única “cabeza” que cortar. Un gobierno o una corporación no puede obligar fácilmente a una red descentralizada global de servidores independientes a implementar vigilancia masiva o censura generalizada.
 
@@ -75,8 +81,8 @@ Busca alternativas a Gmail, Outlook o iCloud, y comienza a usarlas. No tienes qu
 
 ## Conclusión
 
-No uso todo esto a la perfección todavía, y no he abandonado cada gran servicio de la noche a la mañana. Por ejemplo, YouTube sigue siendo una plataforma enorme y no he encontrado un reemplazo completo.
+No uso unicamente estos protocolos, y no he abandonado cada gran servicio de la noche a la mañana. Por ejemplo, YouTube sigue siendo una plataforma enorme y no he encontrado un reemplazo completo.
 
-Pero estoy haciendo el cambio. Dejé de usar Discord por completo y migré a Matrix, que actualmente alojo con tuwunel (aunque el selfhosting es totalmente opcional). Algunos amigos usan Matrix conmigo ahora lost cuales no son muy técnicos, pero como las aplicaciones modernas están muy pulidas, las usan sin problema.
+Dejé de usar Discord por completo y migré a Matrix, que actualmente alojo con tuwunel (aunque el selfhosting es totalmente opcional). Algunos amigos usan Matrix conmigo ahora los cuales no son muy técnicos, pero como las aplicaciones modernas están muy pulidas, las usan sin problema.
 
 Internet debería ser un lugar donde podamos comunicarnos y compartir información libremente, sin estar rehén de unas pocas compañías gigantes. Al elegir aplicaciones construidas sobre protocolos abiertos en lugar de servicios cerrados, recuperamos nuestros datos, resistimos la censura y construimos una web verdaderamente descentralizada.
