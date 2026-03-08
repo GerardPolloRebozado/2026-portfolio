@@ -10,8 +10,14 @@ const year = new Date().getFullYear();
 
 <footer>
     <div class="foot-inner">
-        <span class="foot-copy">{t("footer.copy").replace("{year}", year.toString())}</span>
+        <span class="foot-copy"
+            >{t("footer.copy").replace("{year}", year.toString())}</span
+        >
         <SocialLinks />
+        <a
+            href="https://rybbit.pollorebozado.com/6/main?timeMode=day&bucket=hour&stat=users&wellKnown=today"
+            >{t("footer.analytics")}</a
+        >
     </div>
 </footer>
 
