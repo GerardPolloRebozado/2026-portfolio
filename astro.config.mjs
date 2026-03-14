@@ -28,6 +28,9 @@ export default defineConfig({
       prefixDefaultLocale: true,
     },
   },
+  redirects: {
+    '/sitemap.xml': '/sitemap-index.xml',
+  },
   adapter: node({
     mode: 'standalone',
   }),
