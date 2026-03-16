@@ -5,6 +5,8 @@ RUN corepack enable && corepack prepare pnpm@latest --activate
 COPY package.json pnpm-lock.yaml* ./
 RUN pnpm install --frozen-lockfile
 COPY . .
+ARG GITHUB_PAT
+ENV GITHUB_PAT=$GITHUB_PAT
 RUN pnpm run build
 
 ENV HOST=0.0.0.0
