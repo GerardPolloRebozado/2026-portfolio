@@ -4,7 +4,7 @@ import { emojify } from "node-emoji";
 
 export const prerender = false;
 
-const token = import.meta.env.GITHUB_PAT;
+const token = process.env.GITHUB_PAT || import.meta.env.GITHUB_PAT;
 const username = "gerardPolloRebozado";
 
 const commits = await getCachedCommits(username, token);
