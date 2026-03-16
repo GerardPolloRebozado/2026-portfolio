@@ -1,5 +1,16 @@
 ---
-
+// No frontmatter logic needed for static
 ---
 
-<meta http-equiv="refresh" content="0;url=/en/" />
+<html>
+    <head>
+        <script is:inline>
+            // Detect language and jump immediately
+            const locale = navigator.language.split("-")[0] || "en";
+            const supported = ["en", "es"];
+            const target = supported.includes(locale) ? locale : "en";
+            window.location.pathname = `/${target}/`;
+        </script>
+    </head>
+    <body style="background: #000;"> </body>
+</html>
