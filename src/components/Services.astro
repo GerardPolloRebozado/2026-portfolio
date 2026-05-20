@@ -1,0 +1,58 @@
+---
+import { useTranslations } from "../i18n/ui";
+
+const { lang } = Astro.params;
+const t = useTranslations(lang as "en" | "es");
+
+---
+
+<section id="services">
+    <div class="serv-inner">
+        <div class="sep fade-up">
+            <span class="sep-num">02 —</span>
+            <span class="sep-label">{t("services.title")}</span>
+            <span class="sep-rule"></span>
+        </div>
+
+        <div class="serv-text fade-up">
+            <div set:html={t("services.text")} />
+        </div>
+    </div>
+</section>
+
+<style>
+    #services {
+        padding: 6rem 2.5rem;
+        background: var(--paper);
+    }
+    .serv-inner {
+        max-width: 900px;
+        margin: 0 auto;
+    }
+    .serv-text p {
+        font-size: 1rem;
+        line-height: 1.8;
+        color: var(--ink2);
+        margin-bottom: 1rem;
+    }
+    .serv-text ul {
+        margin: 0.5rem 0 1rem 1.25rem;
+    }
+    .serv-text li {
+        margin-bottom: 0.6rem;
+        color: var(--ink2);
+    }
+    .serv-text a {
+        color: var(--blue);
+        text-decoration: none;
+    }
+    .serv-text a:hover {
+        text-decoration: underline;
+    }
+
+    @media (max-width: 640px) {
+        #services {
+            padding: 4rem 1.5rem;
+        }
+    }
+</style>
