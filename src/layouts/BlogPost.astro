@@ -16,11 +16,20 @@ const t = useTranslations(lang as "en" | "es");
 <html lang={lang}>
     <head>
         <BaseHead title={title} description={description} />
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css"
+            integrity="sha384-n8MVd4RsNIU0tAv4ct0nTaAbDJwPJzDEaqSD1odI+WdtXRGWt2kTvGFasHpSy3SV"
+            crossorigin="anonymous"
+        />
     </head>
     <body>
         <Header />
         <main class="post-main">
             <article class="reading">
+                <a href={`/${lang}/blog`} class="back-link">
+                    {t("blog.back")}
+                </a>
                 <header class="post-header">
                     <div class="post-meta">
                         <FormattedDate date={pubDate} />
@@ -51,12 +60,63 @@ const t = useTranslations(lang as "en" | "es");
             </article>
         </main>
         <Footer />
+
+        <script>
+            function setupCodeBlocks() {
+                const preBlocks = document.querySelectorAll("pre");
+                
+                preBlocks.forEach((pre) => {
+                    // Avoid duplicate headers if script runs multiple times
+                    if (pre.querySelector(".code-header")) return;
+
+                    // Extract language
+                    const code = pre.querySelector("code");
+                    const langMatch = pre.className.match(/language-(\w+)/) || (code && code.className.match(/language-(\w+)/));
+                    const lang = langMatch ? langMatch[1] : "code";
+
+                    // Create header
+                    const header = document.createElement("div");
+                    header.className = "code-header";
+                    
+                    const langLabel = document.createElement("span");
+                    langLabel.innerText = lang;
+                    header.appendChild(langLabel);
+
+                    const copyBtn = document.createElement("button");
+                    copyBtn.className = "copy-btn";
+                    copyBtn.innerText = "Copy";
+                    copyBtn.onclick = () => {
+                        const text = code ? code.innerText : pre.innerText;
+                        navigator.clipboard.writeText(text).then(() => {
+                            copyBtn.innerText = "Copied!";
+                            copyBtn.classList.add("copied");
+                            setTimeout(() => {
+                                copyBtn.innerText = "Copy";
+                                copyBtn.classList.remove("copied");
+                            }, 2000);
+                        });
+                    };
+                    header.appendChild(copyBtn);
+
+                    pre.prepend(header);
+                });
+            }
+
+            // Run on initial load
+            setupCodeBlocks();
+            
+            // Handle Astro view transitions if present
+            document.addEventListener("astro:page-load", setupCodeBlocks);
+        </script>
     </body>
 </html>
 
 <style>
     #heroImage {
-        background-color:;
+        background-color: var(--paper2);
+        border-radius: 8px;
+        margin-bottom: 2rem;
+        border: 1px solid var(--rule);
     }
 
     .post-main {
