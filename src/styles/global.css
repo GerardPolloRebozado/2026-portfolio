@@ -438,6 +438,63 @@ body::after {
     color: var(--ink2);
     margin: 1.5rem 0;
 }
+.reading ul,
+.reading ol {
+    margin: 0 0 1.25rem;
+    padding-left: 1.5rem;
+    color: var(--ink2);
+    line-height: 1.8;
+}
+.reading li {
+    margin-bottom: 0.35rem;
+}
+
+/* ── Tables ── */
+.reading table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin: 2rem 0;
+    border: 1px solid var(--rule);
+    border-radius: 6px;
+    overflow: hidden;
+    font-size: 0.9rem;
+}
+@media (max-width: 640px) {
+    .reading table {
+        display: block;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+}
+.reading thead {
+    background: var(--paper2);
+}
+.reading th {
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--rule);
+}
+.reading td {
+    padding: 0.75rem 1rem;
+    border-bottom: 1px solid var(--rule);
+    color: var(--ink2);
+}
+.reading tbody tr:last-child td {
+    border-bottom: none;
+}
+.reading tbody tr {
+    transition: background 0.15s ease;
+}
+.reading tbody tr:hover {
+    background: var(--bluefaint);
+}
 
 /* ── Dark mode toggle button ── */
 .toggle-btn {
