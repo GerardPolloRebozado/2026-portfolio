@@ -1,4 +1,4 @@
-FROM node:lts AS runtime
+FROM node:24-alpine3.23 AS runtime
 WORKDIR /app
 
 RUN npm install -g pnpm@11.1.2
