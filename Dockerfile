@@ -1,12 +1,13 @@
 FROM node:lts AS runtime
 WORKDIR /app
 
-RUN corepack enable && corepack prepare pnpm@latest --activate
+RUN npm install -g pnpm@11.1.2
 COPY package.json pnpm-lock.yaml* pnpm-workspace.yaml ./
 RUN pnpm install --frozen-lockfile
 COPY . .
 ARG GITHUB_PAT
 ENV GITHUB_PAT=$GITHUB_PAT
+ENV CI=true
 RUN pnpm run build
 
 ENV HOST=0.0.0.0
