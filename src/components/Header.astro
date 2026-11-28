@@ -4,6 +4,13 @@ import { useTranslations } from "../i18n/ui";
 
 const { lang } = Astro.params;
 const t = useTranslations(lang as "en" | "es");
+
+const targetLang = lang === "en" ? "es" : "en";
+const currentPath = Astro.url.pathname;
+const switchedPath =
+    currentPath === `/${lang}` || currentPath.startsWith(`/${lang}/`)
+        ? currentPath.replace(new RegExp(`^/${lang}`), `/${targetLang}`)
+        : `/${targetLang}`;
 ---
 
 <!-- Custom cursor -->
@@ -23,23 +30,12 @@ const t = useTranslations(lang as "en" | "es");
 
     <!-- nav actions -->
     <div class="nav-actions">
-        {
-            lang === "en" ? (
-                <a
-                    href="/es"
-                    style="font-size:0.85rem;color:var(--ink2);text-decoration:none;transition:opacity 0.2s;"
-                >
-                    Español
-                </a>
-            ) : (
-                <a
-                    href="/en"
-                    style="font-size:0.85rem;color:var(--ink2);text-decoration:none;transition:opacity 0.2s;"
-                >
-                    English
-                </a>
-            )
-        }
+        <a
+            href={`${switchedPath}${Astro.url.search}`}
+            style="font-size:0.85rem;color:var(--ink2);text-decoration:none;transition:opacity 0.2s;"
+        >
+            {lang === "en" ? "Español" : "English"}
+        </a>
         <button
             id="theme-toggle"
             class="toggle-btn"
